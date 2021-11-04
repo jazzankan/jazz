@@ -1,11 +1,16 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Jazz Eyes</title>
-</head>
-<body class="antialiased">
-<h1 class="text-3xl">Kroppen!</h1>
-</body>
-</html>
+<x-guest-layout>
+    <div class="bg-blue-100 rounded-lg max-w-screen-xl m-auto">
+        <div class="grid grid-cols-1 md:grid-cols-12 md:gap-3">
+            <div class="m-2.5 md:border-r md:border-red-700 md:col-span-3">
+                <h1 class="mv-2 text-3xl text-center">Länkar</h1>
+            </div>
+            <div class="m-2.5 md:col-span-6">
+                <h1 class="mv-2 text-3xl text-center">Huvudinnehåll</h1>
+                <p>gfgfg fggfgfg gfgfgf gfgfgf juyjuyu iiuiuiuiui i88989898 989898989uyuygdsds dsdsd dsdsdsdsdsdsdsdsdsdsd  f</p>
+            </div>
+            <div class="m-2.5 md:border-l md:border-red-700 md:col-span-3">
+                <h1 class=" mv-2 text-3xl text-center">Typ annonser</h1>
+            </div>
+        </div>
+    </div>
+</x-guest-layout>

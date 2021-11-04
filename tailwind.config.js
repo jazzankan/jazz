@@ -12,6 +12,9 @@ module.exports = {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
+            backgroundImage: {
+                'instr-pattern': "url('https://webbsallad.se/jazzfiler/instr_semi.png')",
+            },
         },
     },
 

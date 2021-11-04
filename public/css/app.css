@@ -17962,6 +17962,10 @@ select {
   background-image: linear-gradient(to top left, var(--tw-gradient-stops));
 }
 
+.bg-instr-pattern {
+  background-image: url('https://webbsallad.se/jazzfiler/instr_semi.png');
+}
+
 .from-transparent {
   --tw-gradient-from: transparent;
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
@@ -49262,6 +49266,10 @@ select {
     background-image: linear-gradient(to top left, var(--tw-gradient-stops));
   }
 
+  .sm\:bg-instr-pattern {
+    background-image: url('https://webbsallad.se/jazzfiler/instr_semi.png');
+  }
+
   .sm\:from-transparent {
     --tw-gradient-from: transparent;
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
@@ -80548,6 +80556,10 @@ select {
 
   .md\:bg-gradient-to-tl {
     background-image: linear-gradient(to top left, var(--tw-gradient-stops));
+  }
+
+  .md\:bg-instr-pattern {
+    background-image: url('https://webbsallad.se/jazzfiler/instr_semi.png');
   }
 
   .md\:from-transparent {
@@ -111838,6 +111850,10 @@ select {
     background-image: linear-gradient(to top left, var(--tw-gradient-stops));
   }
 
+  .lg\:bg-instr-pattern {
+    background-image: url('https://webbsallad.se/jazzfiler/instr_semi.png');
+  }
+
   .lg\:from-transparent {
     --tw-gradient-from: transparent;
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
@@ -143126,6 +143142,10 @@ select {
     background-image: linear-gradient(to top left, var(--tw-gradient-stops));
   }
 
+  .xl\:bg-instr-pattern {
+    background-image: url('https://webbsallad.se/jazzfiler/instr_semi.png');
+  }
+
   .xl\:from-transparent {
     --tw-gradient-from: transparent;
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
@@ -174412,6 +174432,10 @@ select {
 
   .\32xl\:bg-gradient-to-tl {
     background-image: linear-gradient(to top left, var(--tw-gradient-stops));
+  }
+
+  .\32xl\:bg-instr-pattern {
+    background-image: url('https://webbsallad.se/jazzfiler/instr_semi.png');
   }
 
   .\32xl\:from-transparent {
