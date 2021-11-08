@@ -20,7 +20,9 @@ class CreateEventsTable extends Migration
             $table->foreignId('organizer_id')->constrained();
             $table->date('day');
             $table->string('timeofday')->nullable();
+            $table->string('link')->nullable();
             $table->text('comment')->nullable();
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }
