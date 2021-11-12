@@ -22,7 +22,7 @@ class CreateEventsTable extends Migration
             $table->string('timeofday')->nullable();
             $table->string('link')->nullable();
             $table->text('comment')->nullable();
-            $table->string('note')->nullable();
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }
