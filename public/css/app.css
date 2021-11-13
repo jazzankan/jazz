@@ -806,6 +806,11 @@ select {
   }
 }
 
+li.events:nth-child(even){
+  --tw-bg-opacity: 1;
+  background-color: rgba(254, 243, 199, var(--tw-bg-opacity));
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

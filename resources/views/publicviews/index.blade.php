@@ -5,12 +5,18 @@
                 <h1 class="mv-2 text-3xl text-center">Länkar</h1>
             </div>
             <div class="m-2.5 md:col-span-6">
-                <h1 class="mv-2 text-3xl text-center">Huvudinnehåll</h1>
-                <p>gfgfg fggfgfg gfgfgf gfgfgf juyjuyu iiuiuiuiui i88989898 989898989uyuygdsds dsdsd dsdsdsdsdsdsdsdsdsdsd  f</p>
-            </div>
-            <div class="m-2.5 md:border-l md:border-red-700 md:col-span-3">
-                <h1 class=" mv-2 text-3xl text-center">Typ annonser</h1>
-            </div>
+                <h1 class="mv-2 mb-8 text-3xl text-center">Evenemang</h1>
+                <div class="bg-white rounded-lg">
+                <ul>
+                    @foreach ($events as $event)
+                        <li class="events pl-2 py-2.5">{{ $event->name }}</li>
+                    @endforeach
+                </ul>
+                </div>
         </div>
+        <div class="m-2.5 md:border-l md:border-red-700 md:col-span-3">
+            <h1 class=" mv-2 text-3xl text-center">Typ annonser</h1>
+        </div>
+    </div>
     </div>
 </x-guest-layout>

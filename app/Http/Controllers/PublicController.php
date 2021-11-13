@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Event;
 
 class PublicController extends Controller
 {
@@ -13,6 +14,7 @@ class PublicController extends Controller
 
     public function index()
     {
-        return view('publicviews.index');
+        $events = Event::all();
+        return view('publicviews.index')->with('events',$events);
     }
 }
