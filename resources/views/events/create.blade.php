@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Skapa nytt event') }}
+            {{ __('Skapa nytt evenemang') }}
         </h2>
     </x-slot>
     <div class="py-12">
@@ -10,18 +10,51 @@
                 <form method="post" action="{{ route('events.store') }}">
                     @csrf
                     <div class="pl-2">
-                        <label for="title">Namn:</label><br>
-                        <input type="text" class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500" value="{{ old('title') }}" name="title"/>
                         <div>
-                            <label for="description">Beskrivning:</label><br>
-                            <textarea class="mb-6 w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" rows="4" id="description" name="description">{!! old('description') !!}</textarea>
+                            <label for="title">Namn:</label><br>
+                            <input type="text"
+                                   class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
+                                   value="{{ old('title') }}" name="title"/>
                         </div>
-                        <div class="mt-5"><label for="deadline">Datum:</label><br>
-                            <input type="date" class="border rounded-lg mb-6" value="{{ old('deadline') != null ? old('deadline') : ''}}" name="date">
+                        <div>
+                            <label for="place">Plats:</label><br>
+                            <input type="text"
+                                   class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
+                                   value="{{ old('place') }}" name="place"/>
                         </div>
-                        <div class="mb-6">
-                            <label><input type="radio" name="must" value="y" {{ (old('must') === 'n') ? '' : 'checked' }}> Plikt</label>
-                            <label><input type="radio" name="must" {{ (old('must') === 'n') ? 'checked' : '' }} value="n"> Hobby eller nöje</label>
+                        <div>
+                            <label for="organizer">Organisatör:</label><br>
+                            <input type="text"
+                                   class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
+                                   value="{{ old('organizer') }}" name="organizer"/>
+                        </div>
+                        <div class="mt-5"><label for="date">Datum:</label><br>
+                            <input type="date" class="border rounded-lg mb-6"
+                                   value="{{ old('deadline') != null ? old('date') : ''}}" name="date">
+                        </div>
+                        <div>
+                            <label for="clock">Klockslag:</label><br>
+                            <input type="text"
+                                   class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
+                                   value="{{ old('clock') }}" name="clock"/>
+                        </div>
+                        <div>
+                            <label for="comment">Kommentar:</label><br>
+                            <input type="text"
+                                   class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
+                                   value="{{ old('comment') }}" name="comment"/>
+                        </div>
+                        <div>
+                            <label for="link">Länk till info:</label><br>
+                            <input type="text"
+                                   class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
+                                   value="{{ old('link') }}" name="link"/>
+                        </div>
+                        <div>
+                            <label for="note">Intern anteckning:</label><br>
+                            <input type="text"
+                                   class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
+                                   value="{{ old('note') }}" name="note"/>
                         </div>
                         <button type="submit" class="btn-blue">Skapa</button>
                     </div>
