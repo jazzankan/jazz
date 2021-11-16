@@ -15,12 +15,12 @@ class Event extends Model
         return $this->hasMany(Artist::class);
     }
 
-    public function organizers()
+    public function organizer()
     {
         return $this->belongsTo(Organizer::class);
     }
 
-    public function places()
+    public function place()
     {
         return $this->belongsTo(Place::class);
     }

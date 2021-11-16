@@ -10,7 +10,7 @@ class Organizer extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function places()
+    public function place()
     {
         return $this->belongsTo(Place::class);
     }
