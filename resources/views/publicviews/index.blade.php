@@ -13,6 +13,7 @@
                         Ort: {{ $event->place->municipality }}<br>
                         Org: {{ $event->organizer->orgname }}<br>
                         Tid: <b>{{ $event->day }}</b> @if($event->timeofday) , klockan: {{ $event->timeofday }}@endif<br>
+                            @if($event->comment){{ $event->comment }}<br>@endif
                         <a target="_blank" class="text-blue-800 underline hover:bg-red-200" href="{{ $event->link }}">Mer info</a></li>
                     @endforeach
                 </ul>

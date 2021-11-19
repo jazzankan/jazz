@@ -11,10 +11,10 @@
                     @csrf
                     <div class="pl-2">
                         <div>
-                            <label for="title">Namn:</label><br>
+                            <label for="name">Namn:</label><br>
                             <input type="text"
                                    class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
-                                   value="{{ old('title') }}" name="title"/>
+                                   value="{{ old('name') }}" name="name"/>
                         </div>
                         <div>
                             <label for="place">Plats:</label><br>
@@ -28,9 +28,9 @@
                                    class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
                                    value="{{ old('organizer') }}" name="organizer"/>
                         </div>
-                        <div class="mt-5"><label for="date">Datum:</label><br>
+                        <div class="mt-5"><label for="day">Datum:</label><br>
                             <input type="date" class="border rounded-lg mb-6"
-                                   value="{{ old('deadline') != null ? old('date') : ''}}" name="date">
+                                   value="{{ old('day') != null ? old('day') : ''}}" name="day">
                         </div>
                         <div>
                             <label for="clock">Klockslag:</label><br>

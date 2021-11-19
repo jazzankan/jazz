@@ -35,7 +35,22 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request['place_id'] = 1;
+        $request['organizer_id'] = 4;
+
+        $attributes = request()->validate([
+            'name' => 'required | min:3',
+            'place_id' => 'required | integer',
+            'organizer_id' => 'required | integer',
+            'day' => 'required | date',
+            'timeofdayday' => 'nullable | max:5',
+            'link' => 'nullable',
+            'comment' => 'nullable | max:200',
+            'note' => 'nullable | max:200'
+        ]);
+        $memory = Event::create($attributes);
+
+        return redirect('/');
     }
 
     /**
