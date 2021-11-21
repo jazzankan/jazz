@@ -1,3 +1,6 @@
-<div>
-    {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
-</div>
+
+    <div style="text-align: center">
+        <button wire:click="increment">+</button>
+        <h1>{{ $place }}</h1>
+    </div>
+
