@@ -7,7 +7,8 @@
     <div class="py-12">
         <div class="max-w-screen-lg mx-auto sm:px-6 lg:px-8">
             <div>
-                <form method="PUT" action="{{ route('places.update',$place->id) }}">
+                <form method="POST" action="{{ route('places.update',$place->id) }}">
+                    @method('PATCH')
                     @csrf
                     <div class="pl-2">
                         <div>

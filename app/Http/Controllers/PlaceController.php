@@ -76,7 +76,13 @@ class PlaceController extends Controller
      */
     public function update(Request $request, Place $place)
     {
-        //
+        $attributes = request()->validate([
+            'municipality' => 'required | min:3',
+            'note' => 'nullable | max:200'
+        ]);
+        $place->update(request(['municipality','note']));
+
+        return redirect('/places');
     }
 
     /**
