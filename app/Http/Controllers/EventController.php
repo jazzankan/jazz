@@ -48,7 +48,7 @@ class EventController extends Controller
             'comment' => 'nullable | max:200',
             'note' => 'nullable | max:200'
         ]);
-        $memory = Event::create($attributes);
+        $event = Event::create($attributes);
 
         return redirect('/');
     }

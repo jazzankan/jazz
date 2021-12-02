@@ -14,7 +14,8 @@ class PlaceController extends Controller
      */
     public function index()
     {
-        //
+        $places = Place::all()->sortBy('municipality');
+        return view('places.index')->with('places',$places);
     }
 
     /**
@@ -24,7 +25,7 @@ class PlaceController extends Controller
      */
     public function create()
     {
-        //
+        return view('places.create');
     }
 
     /**
@@ -35,7 +36,13 @@ class PlaceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attributes = request()->validate([
+            'municipality' => 'required | min:3',
+            'note' => 'nullable | max:200'
+        ]);
+        $memory = Place::create($attributes);
+
+        return redirect('/places');
     }
 
     /**
@@ -57,7 +64,7 @@ class PlaceController extends Controller
      */
     public function edit(Place $place)
     {
-        //
+        return view('places.edit')->with('place',$place);
     }
 
     /**
