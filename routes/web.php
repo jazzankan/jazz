@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\PlaceController;
-
+use App\Http\Controllers\OrganizerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,6 +33,9 @@ Route::resource('events', EventController::class)
     ->middleware(['auth']);
 
 Route::resource('places', PlaceController::class)
+    ->middleware(['auth']);
+
+Route::resource('organizers', OrganizerController::class)
     ->middleware(['auth']);
 
 

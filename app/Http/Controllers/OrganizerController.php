@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Organizer;
+use App\Models\Place;
 use Illuminate\Http\Request;
 
 class OrganizerController extends Controller
@@ -24,7 +25,9 @@ class OrganizerController extends Controller
      */
     public function create()
     {
-        //
+        $places = Place::all()->sortBy('municipality');
+
+        return view('/organizers/create')->with('places',$places);
     }
 
     /**
