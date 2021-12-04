@@ -38,7 +38,15 @@ class OrganizerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attributes = request()->validate([
+            'orgname' => 'required | min:3',
+            'place_id' => 'required | integer',
+            'comment' => 'nullable | max:200',
+            'note'    => 'nullable | max:200'
+        ]);
+        $memory = Organizer::create($attributes);
+
+        return redirect('/');
     }
 
     /**
