@@ -40,6 +40,7 @@ class OrganizerController extends Controller
     {
         $attributes = request()->validate([
             'orgname' => 'required | min:3',
+            'orglink' => 'nullable',
             'place_id' => 'required | integer',
             'comment' => 'nullable | max:200',
             'note'    => 'nullable | max:200'

@@ -17,6 +17,12 @@
                                    value="{{ old('orgname') }}" name="orgname"/>
                         </div>
                         <div>
+                            <label for="orglink">Länk:</label><br>
+                            <input type="text"
+                                   class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
+                                   value="{{ old('orglink') }}" name="orglink"/>
+                        </div>
+                        <div>
                             <label for="place_id">Ort:</label><br>
                         <select class="border mb-6" name="place_id">
                             <option value ="{{ old('place_id') }}">Välj ort</option>
@@ -24,6 +30,7 @@
                                 <option value ="{{ $p->id }}">{{ $p->municipality }}</option>
                             @endforeach
                         </select>
+                            <p class="mt-0 mb-4">@if ( old('place_id')) Vald ort: {{ $places->where('id',old('place_id'))->first()->municipality }}@endif</p>
                         </div>
                         <div>
                             <label for="note">Kommentar:</label><br>
