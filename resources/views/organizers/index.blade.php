@@ -1,0 +1,17 @@
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Inlagda organisatörer') }}
+        </h2>
+    </x-slot>
+    <div class="py-12">
+        <div class="max-w-screen-lg mx-auto sm:px-6 lg:px-8">
+            <ul>
+                @foreach($organizers as $org)
+                    <li class="mt-2"><a href="/organizers/{{ $org->id }}/edit" @if($org == App\Models\Organizer::latest()->first())class="text-green-800 font-bold"@else class=" text-blue-800 font-bold"@endif>{{ $org->orgname }}</a> @if($org->comment) <span class="text-sm"> |Kommentar: {{ $org->comment }}</span>@endif @if($org->note) <span class="text-sm"> |Anteckning: {{ $org->note }}</span>@endif<br>
+                    @if($org->orglink)<span class="text-sm">Länk: </span><a target="_blank" href="{{ $org->orglink }}" class="text-blue-800 text-sm">{{ $org->orglink }}</a>@endif</li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+</x-app-layout>

@@ -15,7 +15,9 @@ class OrganizerController extends Controller
      */
     public function index()
     {
-        //
+        $organizers = Organizer::all()->sortBy('orgname');
+
+        return view('/organizers.index')->with('organizers',$organizers);
     }
 
     /**
@@ -47,7 +49,7 @@ class OrganizerController extends Controller
         ]);
         $memory = Organizer::create($attributes);
 
-        return redirect('/');
+        return redirect('/organizers');
     }
 
     /**
@@ -81,7 +83,16 @@ class OrganizerController extends Controller
      */
     public function update(Request $request, Organizer $organizer)
     {
-        //
+        $attributes = request()->validate([
+            'orgname' => 'required | min:3',
+            'orglink' => 'nullable',
+            'place_id' => 'required | integer',
+            'comment' => 'nullable | max:200',
+            'note'    => 'nullable | max:200'
+        ]);
+        $organizer->update(request(['orgname','orglink','place_id','comment','note']));
+
+        return redirect('/organizers');
     }
 
     /**
