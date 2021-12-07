@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Organizer;
 use App\Models\Place;
+use App\models\Event;
 use Illuminate\Http\Request;
 
 class OrganizerController extends Controller
@@ -71,7 +72,9 @@ class OrganizerController extends Controller
      */
     public function edit(Organizer $organizer)
     {
-        //
+        $places = Place::all()->sortBy('municipality');
+
+        return view('/organizers.edit')->with('organizer',$organizer)->with('places',$places);
     }
 
     /**
@@ -103,6 +106,8 @@ class OrganizerController extends Controller
      */
     public function destroy(Organizer $organizer)
     {
-        //
+        //om inga events finns
+        if(!Event::all()->get()->belongsTo($organizer))
+        $organizer->delete();
     }
 }
