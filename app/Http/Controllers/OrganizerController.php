@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Organizer;
 use App\Models\Place;
-use App\models\Event;
+use App\Models\Event;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class OrganizerController extends Controller
 {
@@ -86,6 +87,14 @@ class OrganizerController extends Controller
      */
     public function update(Request $request, Organizer $organizer)
     {
+        $today = Carbon::today();
+        if($request['delete'] === 'delete'){
+            if(!$organizer->event{
+            $this->destroy($organizer);
+            }
+            return redirect('/organizers');
+        }
+
         $attributes = request()->validate([
             'orgname' => 'required | min:3',
             'orglink' => 'nullable',
@@ -106,8 +115,7 @@ class OrganizerController extends Controller
      */
     public function destroy(Organizer $organizer)
     {
-        //om inga events finns
-        if(!Event::all()->get()->belongsTo($organizer))
+        //om inga events finns.
         $organizer->delete();
     }
 }
