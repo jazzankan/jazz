@@ -89,10 +89,13 @@ class OrganizerController extends Controller
     {
         $today = Carbon::today();
         if($request['delete'] === 'delete'){
-            if(!$organizer->event{
+            if($organizer->events()->get()->isEmpty()){
             $this->destroy($organizer);
+                return redirect('/organizers');
             }
-            return redirect('/organizers');
+            else {
+                return redirect()->back()->withErrors(['message1'=>'Kan inte tas bort, eftersom konsert finns.']);
+            }
         }
 
         $attributes = request()->validate([

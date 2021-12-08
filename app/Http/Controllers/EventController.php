@@ -36,7 +36,7 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $request['place_id'] = 2;
-        $request['organizer_id'] = 2;
+        $request['organizer_id'] = 13;
 
         $attributes = request()->validate([
             'name' => 'required | min:3',
