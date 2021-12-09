@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Place;
+use App\Models\Organizer;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -14,7 +16,9 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $events = Event::all();
+
+        return view('events.index')->with('events',$events);
     }
 
     /**
@@ -24,7 +28,11 @@ class EventController extends Controller
      */
     public function create()
     {
-        return view('events.create');
+        $places = Place::all();
+        $organizers = Organizer::all();
+
+
+        return view('events.create')->with('places',$places)->with('organizers',$organizers);
     }
 
     /**
@@ -35,9 +43,6 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        $request['place_id'] = 2;
-        $request['organizer_id'] = 13;
-
         $attributes = request()->validate([
             'name' => 'required | min:3',
             'place_id' => 'required | integer',
