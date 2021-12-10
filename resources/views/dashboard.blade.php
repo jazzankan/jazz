@@ -9,6 +9,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <p><a class="text-blue-800 text-xl" href="/events/create">Skapa evenemang</a></p>
+                    <p><a class="text-blue-800 text-xl" href="/events">Visa evenemang</a></p>
                     <p><a class="text-blue-800 text-xl" href="/places/create">Skapa ort</a></p>
                     <p><a class="text-blue-800 text-xl" href="/places">Visa orter</a></p>
                     <p><a class="text-blue-800 text-xl" href="/organizers/create">Skapa organisatör</a></p>
