@@ -6,6 +6,7 @@ use App\Models\Event;
 use App\Models\Place;
 use App\Models\Organizer;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class EventController extends Controller
 {
@@ -16,9 +17,10 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::all()->sortByDesc('created_at');
+        $today = Carbon::today();
+        $events = Event::where('day','>',$today)->get()->sortByDesc('created_at');
 
-        return view('events.index')->with('events',$events);
+        return view('events.index')->with('events',$events)->with('today',$today);
     }
 
     /**
