@@ -26,12 +26,11 @@
                         <div>
                             <label for="place_id">Ort:</label><br>
                             <select class="border mb-6" name="place_id">
-                                <option value ="{{ $organizer->place_id }}">Välj ort</option>
+                                <option value ="{{ $organizer->place_id }}">{{ $organizer->place->municipality }}</option>
                                 @foreach($places as $p)
                                     <option value ="{{ $p->id }}">{{ $p->municipality }}</option>
                                 @endforeach
                             </select>
-                            <p class="mt-0 mb-4">Vald ort: {{ $places->where('id',$organizer->place_id)->first()->municipality }}</p>
                         </div>
                         <div>
                             <label for="note">Kommentar:</label><br>

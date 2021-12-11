@@ -20,55 +20,51 @@
                         <div>
                             <label for="place_id">Ort:</label><br>
                             <select class="border mb-6" name="place_id">
-                                <option value="{{ $event->place_id }}">Välj ort</option>
+                                <option value="{{ $event->place_id }}">{{ $event->place->municipality }}</option>
                                 @foreach($places as $p)
                                     <option value="{{ $p->id }}">{{ $p->municipality }}</option>
                                 @endforeach
                             </select>
-                            <p class="mt-0 mb-4">@if ( $event->place_id) Vald
-                                ort: {{ $places->where('id',$event->place_id)->first()->municipality }}@endif</p>
                         </div>
                         <div>
-                            <label for="organizer_id">Ort:</label><br>
+                            <label for="organizer_id">Organisatör:</label><br>
                             <select class="border mb-6" name="organizer_id">
-                                <option value="{{ $event->organizer_id }}">Välj organisatör</option>
+                                <option value="{{ $event->organizer_id }}">{{ $event->organizer->orgname }}</option>
                                 @foreach($organizers as $o)
                                     <option value="{{ $o->id }}">{{ $o->orgname }}</option>
                                 @endforeach
                             </select>
-                            <p class="mt-0 mb-4">@if ( old('organizer_id')) Vald
-                                organisatör: {{ $organizers->where('id',old('organizer_id'))->first()->orgname }}@endif</p>
                         </div>
                         <div>
-                            <div class="mt-5"><label for="day">Datum:</label><br>
+                            <div class="mt-3"><label for="day">Datum:</label><br>
                                 <input type="date" class="border rounded-lg mb-6"
-                                       value="{{ old('day') != null ? old('day') : ''}}" name="day">
+                                       value="{{ $event->day }}" name="day">
                             </div>
                             <div>
                                 <label for="timeofday">Klockslag:</label><br>
                                 <input type="text"
                                        class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
-                                       value="{{ old('timeofday') }}" name="timeofday"/>
+                                       value="{{ $event->timeofday }}" name="timeofday"/>
                             </div>
                             <div>
                                 <label for="comment">Kommentar:</label><br>
                                 <input type="text"
                                        class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
-                                       value="{{ old('comment') }}" name="comment"/>
+                                       value="{{ $event->comment }}" name="comment"/>
                             </div>
                             <div>
                                 <label for="link">Länk till info:</label><br>
                                 <input type="text"
                                        class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
-                                       value="{{ old('link') }}" name="link"/>
+                                       value="{{ $event->link }}" name="link"/>
                             </div>
                             <div>
                                 <label for="note">Intern anteckning:</label><br>
                                 <input type="text"
                                        class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
-                                       value="{{ old('note') }}" name="note"/>
+                                       value="{{ $event->note }}" name="note"/>
                             </div>
-                            <button type="submit" class="btn-blue">Skapa</button>
+                            <button type="submit" class="btn-blue">Uppdatera</button>
                         </div>
                 </form>
             </div>
