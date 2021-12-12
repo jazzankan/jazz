@@ -50,7 +50,7 @@ class EventController extends Controller
             'place_id' => 'required | integer',
             'organizer_id' => 'required | integer',
             'day' => 'required | date',
-            'timeofday' => 'nullable | max:5',
+            'timeofday' => 'nullable | max:15',
             'link' => 'nullable',
             'comment' => 'nullable | max:200',
             'note' => 'nullable | max:200'
@@ -99,13 +99,13 @@ class EventController extends Controller
             'place_id' => 'required | integer',
             'organizer_id' => 'required | integer',
             'day' => 'required | date',
-            'timeofday' => 'nullable | max:5',
+            'timeofday' => 'nullable | max:15',
             'link' => 'nullable',
             'comment' => 'nullable | max:200',
             'note' => 'nullable | max:200'
         ]);
         $event->update(request(['name','place_id','organizer_id','day','timeofday','link','comment','note']));
-        return redirect('/events');
+        return redirect('/events/');
     }
 
     /**
