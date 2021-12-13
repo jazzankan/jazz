@@ -5,6 +5,7 @@ use App\Http\Controllers\PublicController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\OrganizerController;
+use App\Http\Controllers\ArtistController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,6 +37,9 @@ Route::resource('places', PlaceController::class)
     ->middleware(['auth']);
 
 Route::resource('organizers', OrganizerController::class)
+    ->middleware(['auth']);
+
+Route::resource('artists', ArtistController::class)
     ->middleware(['auth']);
 
 

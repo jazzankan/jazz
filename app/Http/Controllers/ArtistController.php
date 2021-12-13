@@ -24,7 +24,7 @@ class ArtistController extends Controller
      */
     public function create()
     {
-        //
+        return view('artists.create');
     }
 
     /**
@@ -35,7 +35,16 @@ class ArtistController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attributes = request()->validate([
+            'name' => 'required | min:3',
+            'instrument' => 'nullable | min:3',
+            'memberof' => 'nullable | min:3',
+            'comment' => 'nullable | max:200',
+            'note'    => 'nullable | max:200'
+        ]);
+        $memory = Artist::create($attributes);
+
+        return redirect('/dashboard');
     }
 
     /**
