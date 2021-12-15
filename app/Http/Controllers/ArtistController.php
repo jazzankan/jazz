@@ -14,7 +14,9 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        //
+        $artists = Artist::all()->sortBy('name');
+
+        return view('/artists.index')->with('artists',$artists);
     }
 
     /**
@@ -44,7 +46,7 @@ class ArtistController extends Controller
         ]);
         $memory = Artist::create($attributes);
 
-        return redirect('/dashboard');
+        return redirect('/artists');
     }
 
     /**
@@ -66,7 +68,7 @@ class ArtistController extends Controller
      */
     public function edit(Artist $artist)
     {
-        //
+        return view('artists.edit')->with('artist',$artist);
     }
 
     /**
@@ -78,7 +80,17 @@ class ArtistController extends Controller
      */
     public function update(Request $request, Artist $artist)
     {
-        //
+        $attributes = request()->validate([
+            'name' => 'required | min:3',
+            'instrument' => 'nullable | min:3',
+            'memberof' => 'nullable | min:3',
+            'comment' => 'nullable | max:200',
+            'note'    => 'nullable | max:200'
+        ]);
+
+        $artist->update(request(['name','instrument','memberof','comment','note']));
+
+        return redirect('/artists');
     }
 
     /**
