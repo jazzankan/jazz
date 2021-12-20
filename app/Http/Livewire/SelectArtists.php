@@ -23,6 +23,6 @@ public function updatedQuery()
 }
     public function render()
     {
-        return view('livewire.select-artists')->with('artists',$this->artists);
+        return view('livewire.select-artists');
     }
 }

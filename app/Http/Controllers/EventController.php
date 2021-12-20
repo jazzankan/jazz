@@ -30,8 +30,8 @@ class EventController extends Controller
      */
     public function create()
     {
-        $places = Place::all();
-        $organizers = Organizer::all();
+        $places = Place::all()->sortBy('municipality');
+        $organizers = Organizer::all()->sortBy('orgname');
 
 
         return view('events.create')->with('places',$places)->with('organizers',$organizers);
