@@ -9,7 +9,7 @@
         <ul>
             @if(count($artists)> 0)
                 @foreach($artists as $artist)
-                    <li><a x-on:click="names.push('{{ $artist->name }}')" x-on:keyup="{{ $this->mount() }}" x-on:keyup="{{ $this->addartist($artist->id) }}" href="#" id="{{ $artist->id }}" class="text-blue-800">{{ $artist->name }}</a></li>
+                    <li><a x-on:click="names.push('{{ $artist->name }}')"  href="#" id="{{ $artist->id }}" class="text-blue-800">{{ $artist->name }}</a></li>
                 @endforeach
             @else
                 <li class="text-red-800 font-bold">Ingen träff!</li>
