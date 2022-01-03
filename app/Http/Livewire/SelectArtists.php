@@ -9,17 +9,11 @@ class SelectArtists extends Component
 {
 public $query;
 public $artists;
-public $selectedartists = [];
 
 function mount(){
     $this->query = "";
     $this->artists = [];
 }
-    function addartist($artistid)
-    {
-        array_push($this->selectedartists,$artistid);
-
-    }
 
 public function updatedQuery()
 {

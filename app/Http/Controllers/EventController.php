@@ -49,12 +49,14 @@ class EventController extends Controller
             'name' => 'required | min:3',
             'place_id' => 'required | integer',
             'organizer_id' => 'required | integer',
+            'selectedartists' => 'nullable',
             'day' => 'required | date',
             'timeofday' => 'nullable | max:15',
             'link' => 'nullable',
             'comment' => 'nullable | max:200',
             'note' => 'nullable | max:200'
         ]);
+        dd($request['selectedartists']);
         $event = Event::create($attributes);
 
         return redirect('/');
