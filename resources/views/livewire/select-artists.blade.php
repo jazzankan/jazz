@@ -5,7 +5,7 @@
            x-on:click="open=true"
            onfocus="this.value=''"
            class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
-           value="" name="name" placeholder="Sök artist..." wire:model="query"/>
+           value="" name="artistselect" placeholder="Sök artist..." wire:model="query"/>
 
     <p>Förslag:</p>
     @if(strlen($query)>2)

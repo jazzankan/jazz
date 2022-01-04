@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Artist;
 use App\Models\Place;
 use App\Models\Organizer;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
@@ -49,15 +51,21 @@ class EventController extends Controller
             'name' => 'required | min:3',
             'place_id' => 'required | integer',
             'organizer_id' => 'required | integer',
-            'selectedartists' => 'nullable',
+            'selectedartists' => 'nullable| array',
+            'selectedartists.*' => 'nullable| string| max:3',
             'day' => 'required | date',
             'timeofday' => 'nullable | max:15',
             'link' => 'nullable',
             'comment' => 'nullable | max:200',
             'note' => 'nullable | max:200'
         ]);
-        dd($request['selectedartists']);
-        $event = Event::create($attributes);
+        $event = Event::create(request(['name','place_id','organizer_id','day','timeofday','link','comment','note']));
+
+        $lastevent = DB::table('events')->latest()->first();
+        if(count($request['selectedartists'])>0) {
+            $selart = $request['selectedartists'];
+            $lastevent->artists->attach($selart);
+        }
 
         return redirect('/');
     }

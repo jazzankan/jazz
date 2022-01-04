@@ -12,7 +12,7 @@ class Event extends Model
 
     public function artists()
     {
-        return $this->hasMany(Artist::class);
+        return $this->belongsToMany(Artist::class);
     }
 
     public function organizer()
