@@ -8,7 +8,6 @@ use App\Models\Place;
 use App\Models\Organizer;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
@@ -47,6 +46,8 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
+        $request['selectedartists'] = explode(",",$request['selectedartists'][0]);
+
         $attributes = request()->validate([
             'name' => 'required | min:3',
             'place_id' => 'required | integer',
@@ -59,12 +60,14 @@ class EventController extends Controller
             'comment' => 'nullable | max:200',
             'note' => 'nullable | max:200'
         ]);
+
         $event = Event::create(request(['name','place_id','organizer_id','day','timeofday','link','comment','note']));
 
-        $lastevent = DB::table('events')->latest()->first();
+        $lastevent = Event::all()->last();
+
         if(count($request['selectedartists'])>0) {
             $selart = $request['selectedartists'];
-            $lastevent->artists->attach($selart);
+            $lastevent->artists()->attach($selart);
         }
 
         return redirect('/');
