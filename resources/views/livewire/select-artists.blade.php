@@ -22,7 +22,7 @@
         <p>Tillagda artister:<br>
             <ul>
             <template x-for="name in names">
-                <li><span class="text-green-800" x-text="name"></span><a href="#" class="text-sm text-blue-800" x-on:click="names.splice(names.indexOf(name),1); selectedartists.splice(selectedartists.indexOf(name),1) "> Ta bort</a></li>
+                <li><span class="text-green-800" x-text="name + '&nbsp;'"></span><a href="#" style="display: inline-block;" class="text-sm text-blue-800" x-on:click="selectedartists.splice(names.indexOf(name),1); names.splice(names.indexOf(name),1) "><img src="https://webbsallad.se/jazzfiler/soptunna-16.png"></a></li>
             </template>
             </ul>
         </p>

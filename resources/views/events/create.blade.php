@@ -28,7 +28,7 @@
                                 ort: {{ $places->where('id',old('place_id'))->first()->municipality }}@endif</p>
                         </div>
                         <div>
-                            <label for="organizer_id">Ort:</label><br>
+                            <label for="organizer_id">Organisatör:</label><br>
                             <select class="border mb-6" name="organizer_id">
                                 <option value="{{ old('organizer_id') }}">Välj organisatör</option>
                                 @foreach($organizers as $o)
