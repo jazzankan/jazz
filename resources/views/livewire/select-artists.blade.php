@@ -1,6 +1,6 @@
 <div>
     <label for="artists">Koppla artister:</label><br>
-    <div x-data="{ names:[],selectedartists:[],open:true }">
+    <div x-data="{ names:[{{ old('artistnames') }}],selectedartists:[],open:true }">
     <input type="text"
            x-on:keyup="open=true"
            onfocus="this.value=''"
@@ -26,6 +26,7 @@
             </template>
             </ul>
         </p>
-            <input type="hidden" name="selectedartists[]" x-model="selectedartists" />
+            <input type="hidden" name="artistnames" value="{{ old('artistnames') }}" x-model="JSON.stringify(names)" />
+            <input type="hidden" name="selectedartists[]"  x-model="selectedartists" />
     </div>
 </div>

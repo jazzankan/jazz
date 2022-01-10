@@ -7,7 +7,7 @@
     <div class="py-12">
         <div class="max-w-screen-lg mx-auto sm:px-6 lg:px-8">
             <div>
-                <form method="post" autocomplete="off" action="{{ route('events.store') }}">
+                <form method="post" autocomplete="off" action="{{ route('events.store') }}" onkeydown="return event.key != 'Enter';">
                     @csrf
                     <div class="pl-2">
                         <div>

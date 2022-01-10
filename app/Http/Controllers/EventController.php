@@ -48,6 +48,8 @@ class EventController extends Controller
     {
         $request['selectedartists'] = explode(",",$request['selectedartists'][0]);
 
+        //dd($request['artistnames']);
+
         $attributes = request()->validate([
             'name' => 'required | min:3',
             'place_id' => 'required | integer',
@@ -58,7 +60,8 @@ class EventController extends Controller
             'timeofday' => 'nullable | max:15',
             'link' => 'nullable',
             'comment' => 'nullable | max:200',
-            'note' => 'nullable | max:200'
+            'note' => 'nullable | max:200',
+            'artistnames' => 'nullable | array'
         ]);
 
         $event = Event::create(request(['name','place_id','organizer_id','day','timeofday','link','comment','note']));
