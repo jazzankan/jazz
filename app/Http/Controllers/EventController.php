@@ -33,6 +33,7 @@ class EventController extends Controller
     {
         $places = Place::all()->sortBy('municipality');
         $organizers = Organizer::all()->sortBy('orgname');
+        $oldartistnames = "-";
 
 
         return view('events.create')->with('places',$places)->with('organizers',$organizers);
@@ -61,7 +62,7 @@ class EventController extends Controller
             'link' => 'nullable',
             'comment' => 'nullable | max:200',
             'note' => 'nullable | max:200',
-            'artistnames' => 'nullable | array'
+            'artistnames' => 'nullable | string'
         ]);
 
         $event = Event::create(request(['name','place_id','organizer_id','day','timeofday','link','comment','note']));
