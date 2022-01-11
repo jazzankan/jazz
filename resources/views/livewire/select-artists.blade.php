@@ -1,7 +1,7 @@
 <div>
     <label for="artists">Koppla artister:</label><br>
-    <div x-data="{ names:[],selectedartists:[],open:true }">
-    <input type="text"
+    <div x-data="{ names:[ {{ old('artistnames') }}],selectedartists:[],open:true }">
+        <input type="text"
            x-on:keyup="open=true"
            onfocus="this.value=''"
            class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"

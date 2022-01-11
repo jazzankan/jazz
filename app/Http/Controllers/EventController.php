@@ -49,6 +49,10 @@ class EventController extends Controller
     {
         $request['selectedartists'] = explode(",",$request['selectedartists'][0]);
 
+        $request['artistnames'] = str_replace("[","",$request['artistnames']);
+        $request['artistnames']  = str_replace("]","",$request['artistnames']);
+        $request['artistnames'] = str_replace('"',"'",$request['artistnames']);
+
         //dd($request['artistnames']);
 
         $attributes = request()->validate([
