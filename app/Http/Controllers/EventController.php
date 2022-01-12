@@ -47,20 +47,18 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        $request['selectedartists'] = explode(",",$request['selectedartists'][0]);
+        $selart = explode(",",$request['selectedartists']);
+
 
         $request['artistnames'] = str_replace("[","",$request['artistnames']);
         $request['artistnames']  = str_replace("]","",$request['artistnames']);
         $request['artistnames'] = str_replace('"',"'",$request['artistnames']);
 
-        //dd($request['artistnames']);
-
         $attributes = request()->validate([
             'name' => 'required | min:3',
             'place_id' => 'required | integer',
             'organizer_id' => 'required | integer',
-            'selectedartists' => 'nullable| array',
-            'selectedartists.*' => 'nullable| string| max:3',
+            'selectedartists' => 'nullable| string',
             'day' => 'required | date',
             'timeofday' => 'nullable | max:15',
             'link' => 'nullable',
@@ -73,12 +71,11 @@ class EventController extends Controller
 
         $lastevent = Event::all()->last();
 
-        if(count($request['selectedartists'])>0) {
-            $selart = $request['selectedartists'];
+        if(isset($request['selectedartists'])) {
             $lastevent->artists()->attach($selart);
         }
 
-        return redirect('/');
+        return redirect('/events');
     }
 
     /**
