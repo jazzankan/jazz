@@ -38,7 +38,7 @@
                             <p class="mt-0 mb-4">@if ( old('organizer_id')) Vald
                                 organisatör: {{ $organizers->where('id',old('organizer_id'))->first()->orgname }}@endif</p>
                         </div>
-                        @livewire('select-artists')
+                        @livewire('select-artists', ['selectedartistnames' => $selectedartistnames])
                         <div>
                             <div class="mt-5"><label for="day">Datum:</label><br>
                                 <input type="date" class="border rounded-lg mb-6"

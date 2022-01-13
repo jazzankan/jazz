@@ -1,6 +1,6 @@
 <div>
     <label for="artists">Koppla artister:</label><br>
-    <div x-data="{ names:[ {{ old('artistnames') }}],selectedartists:[{{ old('selectedartists') }}],open:true }">
+    <div x-data="{ names:[ {{ old('artistnames') }}{{ $selectedartistnames }} ],selectedartists:[{{ old('selectedartists') }}],open:true }">
         <input type="text"
            x-on:keyup="open=true"
            onfocus="this.value=''"

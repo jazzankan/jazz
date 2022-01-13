@@ -99,10 +99,12 @@ class EventController extends Controller
     {
         $places = Place::all()->sortBy('municipality');
         $organizers = Organizer::all()->sortBy('orgname');
-        $artistnames = $event->artists()->wherePivot('event_id',$event->id)->get();
-        dd($artistnames);
+        $selectedartistnames = $event->artists()->wherePivot('event_id',$event->id)->get()->pluck('name');
+        $selectedartistnames = $selectedartistnames->toArray();
+        $selectedartistnames = implode("','",$selectedartistnames);
+        $selectedartistnames = "'$selectedartistnames'";
 
-        return view('events.edit')->with('event',$event)->with('places',$places)->with('organizers',$organizers);
+        return view('events.edit')->with('event',$event)->with('places',$places)->with('organizers',$organizers)->with('selectedartistnames',$selectedartistnames);
     }
 
     /**
