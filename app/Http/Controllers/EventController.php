@@ -103,8 +103,11 @@ class EventController extends Controller
         $selectedartistnames = $selectedartistnames->toArray();
         $selectedartistnames = implode("','",$selectedartistnames);
         $selectedartistnames = "'$selectedartistnames'";
+        $selectedartistids = $event->artists()->wherePivot('event_id',$event->id)->get()->pluck('id');
+        $selectedartistids = $selectedartistids->toArray();
+        $selectedartistids = implode(",",$selectedartistids);
 
-        return view('events.edit')->with('event',$event)->with('places',$places)->with('organizers',$organizers)->with('selectedartistnames',$selectedartistnames);
+        return view('events.edit')->with('event',$event)->with('places',$places)->with('organizers',$organizers)->with('selectedartistnames',$selectedartistnames)->with('selectedartistids',$selectedartistids);
     }
 
     /**
@@ -116,6 +119,7 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
+        dd($request['selectedartists']);
         $attributes = request()->validate([
             'name' => 'required | min:3',
             'place_id' => 'required | integer',

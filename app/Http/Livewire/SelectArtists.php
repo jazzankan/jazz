@@ -10,6 +10,7 @@ class SelectArtists extends Component
 public $query;
 public $artists;
 public $selectedartistnames;
+public $selectedartistids;
 
 function mount(){
     $this->query = "";

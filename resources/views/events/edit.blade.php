@@ -35,7 +35,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        @livewire('select-artists', ['selectedartistnames' => $selectedartistnames])
+                        @livewire('select-artists', ['selectedartistnames' => $selectedartistnames,'selectedartistids' => $selectedartistids])
                         <div>
                             <div class="mt-3"><label for="day">Datum:</label><br>
                                 <input type="date" class="border rounded-lg mb-6"
