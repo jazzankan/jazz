@@ -47,8 +47,6 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        $selart = explode(",",$request['selectedartists']);
-
 
         $request['artistnames'] = str_replace("[","",$request['artistnames']);
         $request['artistnames']  = str_replace("]","",$request['artistnames']);
@@ -72,6 +70,7 @@ class EventController extends Controller
         $lastevent = Event::all()->last();
 
         if(isset($request['selectedartists'])) {
+            $selart = explode(",",$request['selectedartists']);
             $lastevent->artists()->attach($selart);
         }
 
@@ -119,7 +118,12 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        dd($request['selectedartists']);
+       /* if(isset($request['artistnames'])) {
+            $request['artistnames'] = str_replace("[", "", $request['artistnames']);
+            $request['artistnames'] = str_replace("]", "", $request['artistnames']);
+            $request['artistnames'] = str_replace('"', "'", $request['artistnames']);
+        }*/
+
         $attributes = request()->validate([
             'name' => 'required | min:3',
             'place_id' => 'required | integer',
@@ -128,8 +132,17 @@ class EventController extends Controller
             'timeofday' => 'nullable | max:15',
             'link' => 'nullable',
             'comment' => 'nullable | max:200',
-            'note' => 'nullable | max:200'
+            'note' => 'nullable | max:200',
+            'selectedartists' => 'nullable| string',
+            'artistnames' => 'nullable | string'
+
         ]);
+        if(isset($request['selectedartists'])) {
+            $event->artists()->detach();
+            $selart = explode(",",$request['selectedartists']);
+            $event->artists()->attach($selart);
+        }
+
         $event->update(request(['name','place_id','organizer_id','day','timeofday','link','comment','note']));
         return redirect('/events/');
     }
