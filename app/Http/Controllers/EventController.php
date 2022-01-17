@@ -118,11 +118,16 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-       /* if(isset($request['artistnames'])) {
+        if(isset($request['artistnames'])) {
             $request['artistnames'] = str_replace("[", "", $request['artistnames']);
             $request['artistnames'] = str_replace("]", "", $request['artistnames']);
             $request['artistnames'] = str_replace('"', "'", $request['artistnames']);
-        }*/
+        }
+        if(isset($request['artistnames'])) {
+            $request['artistnames'] = null;
+        }
+
+        //dd($request['selectedartists']);
 
         $attributes = request()->validate([
             'name' => 'required | min:3',
@@ -140,6 +145,7 @@ class EventController extends Controller
         if(isset($request['selectedartists'])) {
             $event->artists()->detach();
             $selart = explode(",",$request['selectedartists']);
+            $selart = array_unique($selart);
             $event->artists()->attach($selart);
         }
 
