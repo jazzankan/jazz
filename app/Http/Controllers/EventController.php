@@ -47,7 +47,7 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-
+        //Behövs vid error. Artistnames ska inte ini databasen.
         $request['artistnames'] = str_replace("[","",$request['artistnames']);
         $request['artistnames']  = str_replace("]","",$request['artistnames']);
         $request['artistnames'] = str_replace('"',"'",$request['artistnames']);
@@ -69,8 +69,10 @@ class EventController extends Controller
 
         $lastevent = Event::all()->last();
 
+        //För att få in id i artist_event-tabellen
         if(isset($request['selectedartists'])) {
             $selart = explode(",",$request['selectedartists']);
+            $selart = array_unique($selart);
             $lastevent->artists()->attach($selart);
         }
 
@@ -98,10 +100,13 @@ class EventController extends Controller
     {
         $places = Place::all()->sortBy('municipality');
         $organizers = Organizer::all()->sortBy('orgname');
+        //För att få upp koplade artister (namnen) på redigeringssidan
         $selectedartistnames = $event->artists()->wherePivot('event_id',$event->id)->get()->pluck('name');
         $selectedartistnames = $selectedartistnames->toArray();
         $selectedartistnames = implode("','",$selectedartistnames);
         $selectedartistnames = "'$selectedartistnames'";
+        if(strlen($selectedartistnames)< 3){$selectedartistnames = null;}
+        //Id:n för kopplade artister.
         $selectedartistids = $event->artists()->wherePivot('event_id',$event->id)->get()->pluck('id');
         $selectedartistids = $selectedartistids->toArray();
         $selectedartistids = implode(",",$selectedartistids);
@@ -118,16 +123,7 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        if(isset($request['artistnames'])) {
-            $request['artistnames'] = str_replace("[", "", $request['artistnames']);
-            $request['artistnames'] = str_replace("]", "", $request['artistnames']);
-            $request['artistnames'] = str_replace('"', "'", $request['artistnames']);
-        }
-        if(isset($request['artistnames'])) {
-            $request['artistnames'] = null;
-        }
-
-        //dd($request['selectedartists']);
+       // Notera att Livewiremodulen använder alternativ rad för x-data om man kommer från editsidan.
 
         $attributes = request()->validate([
             'name' => 'required | min:3',

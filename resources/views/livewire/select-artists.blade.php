@@ -23,7 +23,7 @@
             @endif
         </ul>
         <p>Tillagda artister:<br>
-            <ul>
+                <ul>
             <template x-for="name in names">
                 <li><span class="text-green-800" x-text="name + '&nbsp;'"></span><a href="#" style="display: inline-block;" class="text-sm text-blue-800" x-on:click="selectedartists.splice(names.indexOf(name),1); names.splice(names.indexOf(name),1) "><img src="https://webbsallad.se/jazzfiler/soptunna-16.png"></a></li>
             </template>
