@@ -7,6 +7,9 @@
     <div class="py-12">
         <div class="max-w-screen-lg mx-auto sm:px-6 lg:px-8">
             <p class="mb-4"><a class="btn-blue" href="/events/create">Skapa konsert</a><a class="btn-blue ml-4" href="/" target="_blank">Publik vy</a></p>
+        <div>
+        @livewire('search-events')
+        </div>
             <p class="text-xl">{{ $events->count() }} kommande:</p>
             <ul>
                 @foreach($events as $event)
