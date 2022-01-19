@@ -21,7 +21,6 @@ public function updatedQuery()
 {
     $this->artists = Artist::where('name','like','%' . $this->query . '%')
         ->get();
-    //dd($this->artists);
 }
     public function render()
     {

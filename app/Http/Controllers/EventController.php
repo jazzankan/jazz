@@ -19,7 +19,7 @@ class EventController extends Controller
     public function index()
     {
         $today = Carbon::today();
-        $events = Event::where('day','>',$today)->get()->sortByDesc('created_at');
+        $events = Event::where('day','>',$today)->get()->sortBy('day');
 
         return view('events.index')->with('events',$events)->with('today',$today);
     }
