@@ -10,7 +10,7 @@
         <ul>
             @if(count($events)> 0)
                 @foreach($events as $event)
-                    <li><a class="text-blue-800" href="/events/{{ $event->id }}/edit">{{ $event->name }}</a>, <span class="text-sm italic">{{ $event->organizer->orgname }}</span><span class="text-sm">, {{ $event->day }}</span> @if($event->note)<span class="text-sm text-red-800"> |Anteckning: {{ $event->note }}@endif</span></li>
+                    <li><a class="text-blue-800" href="/events/{{ $event->id }}/edit">{{ $event->name }}</a>, <span class="text-sm italic">{{ $event->organizer->orgname }}</span>, <span class="text-sm italic">{{ $event->place->municipality }}</span><span class="text-sm">, {{ $event->day }}</span> @if($event->note)<span class="text-sm text-red-800"> |Anteckning: {{ $event->note }}@endif</span></li>
                 @endforeach
             @else
                 <li class="text-red-800 font-bold">Ingen träff!</li>
