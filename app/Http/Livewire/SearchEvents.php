@@ -4,7 +4,6 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Event;
-use App\Models\Place;
 use Carbon\Carbon;
 
 class SearchEvents extends Component
@@ -12,7 +11,6 @@ class SearchEvents extends Component
     public $query;
     public $events;
     public $coming;
-    public $places;
     public $today;
 
 

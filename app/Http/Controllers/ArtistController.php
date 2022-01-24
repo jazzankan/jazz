@@ -14,7 +14,7 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        $artists = Artist::all()->sortBy('name');
+        $artists = Artist::latest()->limit(10)->get();
 
         return view('/artists.index')->with('artists',$artists);
     }
