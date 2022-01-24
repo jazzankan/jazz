@@ -33,7 +33,7 @@ class SearchEvents extends Component
     public function updatedQuery()
     {
         if ($this->coming === 1 || $this->coming === null) {
-            $this->events = Event::with(['place', 'organizer'])
+            $this->events = Event::with(['place', 'organizer','artists'])
                 ->where('day', '>=', $this->today)
                 ->where('name', 'like', '%' . $this->query . '%')
                 ->orWhereHas('place', function ($query) {
@@ -44,6 +44,10 @@ class SearchEvents extends Component
                     $query->where('orgname', 'like', '%' . $this->query . '%')
                         ->where('day', '>=', $this->today);
                 })
+                ->orWhereHas('artists', function ($query) {
+                    $query->where('name', 'like', '%' . $this->query . '%')
+                        ->where('day', '>=', $this->today);
+                })
                 ->get();
         } else {
             $this->events = Event::with(['place', 'organizer'])->where('name', 'like', '%' . $this->query . '%')
@@ -52,6 +56,9 @@ class SearchEvents extends Component
                 })
                 ->orWhereHas('organizer', function ($query) {
                     $query->where('orgname', 'like', '%' . $this->query . '%');
+                })
+                ->orWhereHas('artists', function ($query) {
+                    $query->where('name', 'like', '%' . $this->query . '%');
                 })
                 ->get();
         }
