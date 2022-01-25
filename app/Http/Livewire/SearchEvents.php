@@ -13,6 +13,10 @@ class SearchEvents extends Component
     public $coming;
     public $today;
 
+    function emptyquery()
+    {
+        $this->query = "";
+    }
 
     function mount()
     {

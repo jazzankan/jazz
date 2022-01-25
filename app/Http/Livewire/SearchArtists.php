@@ -10,6 +10,11 @@ class SearchArtists extends Component
     public $query;
     public $artists;
 
+    function emptyquery()
+    {
+        $this->query = "";
+    }
+
     function mount()
     {
         $this->query = "";

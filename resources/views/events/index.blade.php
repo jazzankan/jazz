@@ -13,7 +13,7 @@
             <p class="text-xl mt-6">Alla {{ $events->count() }} kommande:</p>
             <ul>
                 @foreach($events as $event)
-                    <li><a @if($event == App\Models\Event::latest()->first())class="text-green-800 font-bold"@else class="text-blue-800"@endif href="/events/{{ $event->id }}/edit">{{ $event->name }}</a>, <span class="text-sm italic">{{ $event->organizer->orgname }}</span>, <span class="text-sm italic">{{ $event->place->municipality }}</span><span class="text-sm">, {{ $event->day }}</span> @if($event->note)<span class="text-sm text-red-800"> |Anteckning: {{ $event->note }}@endif</span></li>
+                    <li><a @if($event == App\Models\Event::latest()->first())class="text-green-800 font-bold"@else class="text-blue-800"@endif href="/events/{{ $event->id }}/edit">{{ $event->name }}</a>, <span class="text-sm italic">{{ $event->organizer->orgname }}</span>, <span class="text-sm italic">{{ $event->place->municipality }}</span><span class="text-sm">, {{ $event->day }}</span>, <span class="text-blue-800 text-sm"><a href="{{ $event->link }}" target="_blank">Mer info</a></span> @if($event->note)<span class="text-sm text-red-800"> |Anteckning: {{ $event->note }}@endif</span></li>
                 @endforeach
             </ul>
         </div>

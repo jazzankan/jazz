@@ -3,7 +3,7 @@
            autocomplete="off"
            onclick="this.value=''"
            class="max-w-lg w-full mt-2 mb-0 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
-           value="" name="artistselect" placeholder="Sök artist..." wire:model="query"/><br>
+           value="" name="artistselect" placeholder="Sök artist..." wire:model="query" wire:click="emptyquery"/><br>
     @if(strlen($query)>2)
         <p class="py-0 mt-6">Träffar:</p>
         <ul>
