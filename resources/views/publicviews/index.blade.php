@@ -5,7 +5,8 @@
                 <h1 class="mv-2 text-3xl text-center">Länkar</h1>
             </div>
             <div class="m-2.5 md:col-span-6">
-                <h1 class="mv-2 mb-8 text-3xl text-center">Evenemang</h1>
+                <h1 class="mv-2 mb-4 text-3xl text-center">Evenemang</h1>
+                @livewire('pub-eventsearch')
                 <div class="bg-white rounded-lg">
                 <ul>
                     @foreach ($events as $event)
