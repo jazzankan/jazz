@@ -3,20 +3,30 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use App\Models\Event;
 use App\Models\Place;
 use App\Models\Organizer;
 use Carbon\Carbon;
 
 class PubEventsearch extends Component
 {
+    public $query;
     public $events;
     public $places;
+    public $selplace;
     public $organizers;
     public $today;
+
+    function emptyquery()
+    {
+        $this->query = "";
+    }
 
     function mount()
     {
         $this->query = "";
+        $this->selplace = "";
+        $this->events = [];
         $this->places = Place::all()->sortBy('municipality');
         $this->organizers = Organizer::all()->sortBy('orgname');
         $this->today = Carbon::today();

@@ -3,7 +3,7 @@
            autocomplete="off"
            onclick="this.value=''"
            class="max-w-lg w-full mt-2 mb-0 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
-           value="" name="artistselect" placeholder="Sök konsert..." wire:model="query" wire:click="emptyquery"/><br>
+           value="" name="search" placeholder="Sök konsert..." wire:model="query" wire:click="emptyquery"/><br>
     <input type="checkbox" class="custom-control-input" id="coming" name="coming" value="coming" checked="checked" wire:click="togglecoming"> <span class="text-sm">Sök endast kommande.</span>
     @if(strlen($query)>2)
         <p class="py-0 mt-6">Träffar:</p>
