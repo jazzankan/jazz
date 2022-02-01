@@ -24,18 +24,23 @@ class PubEventsearch extends Component
 
     function mount()
     {
-        $this->query = "";
+        $this->today = Carbon::today();
+        $this->query = "xxx";
         $this->selplace = "";
-        $this->events = [];
+        $this->events = Event::with(['place','organizer'])->where('day','>=',$this->today)->orderby('day')->get();
         $this->places = Place::all()->sortBy('municipality');
         $this->organizers = Organizer::all()->sortBy('orgname');
-        $this->today = Carbon::today();
     }
     public function updatedQuery()
     {
         $this->events = Event::with(['place', 'organizer','artists'])
-            ->WhereHas('place', function ($query) {
+            ->where('name','like', '%' . $this->query . '%' )
+            ->orWhereHas('place', function ($query) {
                 $query->where('municipality', 'like', '%' . $this->query . '%')
+                    ->where('day', '>=', $this->today);
+            })
+            ->orWhereHas('organizer', function ($query) {
+                $query->where('orgname', 'like', '%' . $this->query . '%')
                     ->where('day', '>=', $this->today);
             })
             ->get();
