@@ -9,23 +9,7 @@
                 <div>
                 @livewire('pub-eventsearch')
                 </div>
-                <p class="mt-4">Alla kommande, i tidsordning:</p>
-                <div class="bg-white rounded-lg">
-                <ul>
-                    @foreach ($events as $event)
-                        <li class="events pl-2 py-2.5"><b>{{ $event->name }}</b><br>
-                        Ort: {{ $event->place->municipality }}<br>
-                        Org: {{ $event->organizer->orgname }}<br>
-                        Tid: <b>{{ $event->day }}</b> @if($event->timeofday) , klockan: {{ $event->timeofday }}@endif<br>
-                            @if($event->comment){{ $event->comment }}<br>@endif
-                            @if($event->link)
-                        <a target="_blank" class="text-blue-800 underline hover:bg-red-200" href="{{ $event->link }}">Mer info</a>@endif</li>
-                    @endforeach
-                </ul>
-                    <p>
-                        {{$events->render()}}
-                    </p>
-                </div>
+
         </div>
         <div class="m-2.5 md:border-l md:border-red-700 md:col-span-3">
             <h1 class=" mv-2 text-3xl text-center">Meddelanden</h1>

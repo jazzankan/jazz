@@ -22,9 +22,9 @@
                onclick="this.value=''"
                class="appearance-none text-sm w-1/2 mt-2 mb-0 px-2 py-1 border rounded-lg text-gray-700 border border-solid border-gray-300 focus:outline-none focus:border-green-500"
                value="" name="search" placeholder="Konsertnamn, artister..." wire:model="query"
-               wire:click="emptyquery"/></p>
-    @if(strlen($query)>2)
-        <ul class="bg-white rounded-lg text-left">
+               wire:click="newsearch"/></p>
+    @if(strlen($query)>2 || $query === "")
+        <ul class="bg-white rounded-lg text-left mt-4">
             @if(count($events)> 0)
                 @foreach($events as $event)
                     <li class="events pl-2 py-2.5"><b>{{ $event->name }}</b><br>
@@ -35,8 +35,9 @@
                         @if($event->link)
                             <a target="_blank" class="text-blue-800 underline hover:bg-red-200" href="{{ $event->link }}">Mer info</a>@endif</li>
                 @endforeach
+                    @if($events->links()){{ $events->links() }}@endif
             @else
-                <li class="text-red-800 font-bold">Ingen träff!</li>
+                <li class="text-red-800 font-bold text-center">Ingen träff!</li>
             @endif
             <hr>
             @endif

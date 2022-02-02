@@ -7,34 +7,37 @@ use App\Models\Event;
 use App\Models\Place;
 use App\Models\Organizer;
 use Carbon\Carbon;
+use Livewire\WithPagination;
 
 class PubEventsearch extends Component
 {
     public $query;
-    public $events;
+    protected $events;
     public $places;
     public $selplace;
     public $organizers;
     public $today;
 
-    function emptyquery()
-    {
-        $this->query = "";
-    }
 
     function mount()
     {
         $this->today = Carbon::today();
-        $this->query = "xxx";
+        $this->query = "";
         $this->selplace = "";
-        $this->events = Event::with(['place','organizer'])->where('day','>=',$this->today)->orderby('day')->get();
+        $this->events = Event::with(['place','organizer'])->where('day','>=',$this->today)->orderby('day');
         $this->places = Place::all()->sortBy('municipality');
         $this->organizers = Organizer::all()->sortBy('orgname');
     }
+
+    public function newsearch(){
+        $this->events = Event::with(['place','organizer'])->where('day','>=',$this->today)->orderby('day');
+        $this->query = "";
+    }
+
     public function updatedQuery()
     {
         $this->events = Event::with(['place', 'organizer','artists'])
-            ->where('name','like', '%' . $this->query . '%' )
+            ->where('name','like', '%' . $this->query . '%' )->where('day', '>=', $this->today)
             ->orWhereHas('place', function ($query) {
                 $query->where('municipality', 'like', '%' . $this->query . '%')
                     ->where('day', '>=', $this->today);
@@ -42,12 +45,12 @@ class PubEventsearch extends Component
             ->orWhereHas('organizer', function ($query) {
                 $query->where('orgname', 'like', '%' . $this->query . '%')
                     ->where('day', '>=', $this->today);
-            })
-            ->get();
+            });
     }
 
     public function render()
     {
-        return view('livewire.pub-eventsearch');
+        return view('livewire.pub-eventsearch',
+        ['events' => $this->events->paginate(10)]);
     }
 }
