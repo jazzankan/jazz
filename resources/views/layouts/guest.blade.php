@@ -26,6 +26,10 @@
         <div class="font-sans text-gray-900 antialiased m-2 md:m-4">
             {{ $slot }}
         </div>
+        <footer class="text-center text-sm bg-gray-300 h-20 pt-2">
+            Anders Fredriksson<br>
+            © 2022
+        </footer>
         @livewireScripts
     </body>
 </html>

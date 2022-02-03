@@ -9,7 +9,6 @@
                 <div>
                 @livewire('pub-eventsearch')
                 </div>
-
         </div>
         <div class="m-2.5 md:border-l md:border-red-700 md:col-span-3">
             <h1 class=" mv-2 text-3xl text-center">Meddelanden</h1>

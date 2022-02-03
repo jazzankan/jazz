@@ -16,10 +16,7 @@ class PublicController extends Controller
 
     public function index()
     {
-        $today = Carbon::today();
-        $events = Event::with(['place','organizer'])->where('day','>=',$today)->orderby('day')
-            ->paginate(10 );
-        //dd($events);
-        return view('publicviews.index')->with('events',$events);
+
+        return view('publicviews.index');
     }
 }

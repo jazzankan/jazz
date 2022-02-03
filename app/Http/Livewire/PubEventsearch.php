@@ -45,6 +45,10 @@ class PubEventsearch extends Component
             ->orWhereHas('organizer', function ($query) {
                 $query->where('orgname', 'like', '%' . $this->query . '%')
                     ->where('day', '>=', $this->today);
+            })
+            ->orWhereHas('artists', function ($query) {
+                $query->where('name', 'like', '%' . $this->query . '%')
+                    ->where('day', '>=', $this->today);
             });
     }
 
