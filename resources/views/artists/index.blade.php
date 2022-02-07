@@ -10,7 +10,7 @@
             <div class="mt-6">
                 @livewire('search-artists')
             </div>
-            <p class="text-lg mt-10">De 10 senast skapade:</p>
+            <p class="text-lg mt-10">De 10 senast skapade av totalt {{ $totalartists->count() }}:</p>
             <ul>
                 @foreach($artists as $a)
                     <li><a href="/artists/{{ $a->id }}/edit" class="text-blue-800">{{ $a->name }}</a>, {{ $a->instrument }} @if($a->note) <span class="text-sm"> |Anteckning: {{ $a->note }}</span>@endif</li>
