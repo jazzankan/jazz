@@ -9,7 +9,6 @@ class SpiderController extends Controller
 {
     public function index()
     {
-
-        return view('events.index')->with('events',$events)->with('today',$today);
+        return view('spiders.index');
     }
 }
