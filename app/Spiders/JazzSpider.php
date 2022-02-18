@@ -10,7 +10,7 @@ use RoachPHP\Http\Response;
 use RoachPHP\Spider\BasicSpider;
 use RoachPHP\Spider\ParseResult;
 
-class SodertornSpider extends BasicSpider
+class JazzSpider extends BasicSpider
 {
     public array $startUrls = [
         'https://www.sh.se'
@@ -43,6 +43,11 @@ class SodertornSpider extends BasicSpider
     public function parse(Response $response): Generator
     {
         // todo...
-        $title = $response->filter('h2')->text();
+        //$title = $response->filter('h2')->text();
+        //yield $response->filter('h2')->text();
+        yield $this->item([
+            'title' => $response->filter('h2')->text()
+        ]);
+
     }
 }
