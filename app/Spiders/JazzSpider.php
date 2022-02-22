@@ -9,6 +9,7 @@ use RoachPHP\Extensions\StatsCollectorExtension;
 use RoachPHP\Http\Response;
 use RoachPHP\Spider\BasicSpider;
 use RoachPHP\Spider\ParseResult;
+use App\Spiders\Processors\HeadlinesProcessor;
 
 class JazzSpider extends BasicSpider
 {
@@ -25,7 +26,7 @@ class JazzSpider extends BasicSpider
     ];
 
     public array $itemProcessors = [
-        //
+        HeadlinesProcessor::class
     ];
 
     public array $extensions = [
@@ -46,7 +47,7 @@ class JazzSpider extends BasicSpider
         //$title = $response->filter('h2')->text();
         //yield $response->filter('h2')->text();
         yield $this->item([
-            'title' => $response->filter('h2')->text()
+            'title' => $response->filter('h3')->text()
         ]);
 
     }
