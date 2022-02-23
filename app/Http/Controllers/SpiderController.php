@@ -12,9 +12,9 @@ class SpiderController extends Controller
     public function index()
     {
         Roach::startSpider(JazzSpider::class);
-        //$title = JazzSpider::item();
-        //dd($title);
 
+        $headlines = HeadlinesProcessor::class::ProcessItem();
+        dd($headlines);
         return view('spiders.index');
     }
 }

@@ -13,7 +13,8 @@ class HeadlinesProcessor implements ItemProcessorInterface
     public function processItem(ItemInterface $item): ItemInterface
     {
         $title = $item->get('title');
-        dd($title);
+        $title = implode($title);
+
         return $title;
     }
 }
