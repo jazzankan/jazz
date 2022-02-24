@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Spiders\JazzSpider;
+use App\Spiders\Processors\HeadlinesProcessor;
 use RoachPHP\Roach;
-use RoachPHP\ItemPipeline\ItemProcessor\HeadlinesProcessor;
+//use RoachPHP\ItemPipeline\ItemProcessor\HeadlinesProcessor;
 
 class SpiderController extends Controller
 {
@@ -13,7 +14,7 @@ class SpiderController extends Controller
     {
         Roach::startSpider(JazzSpider::class);
 
-        $headlines = HeadlinesProcessor::class::ProcessItem();
+        $headlines =
         dd($headlines);
         return view('spiders.index');
     }
