@@ -14,7 +14,6 @@ class HeadlinesProcessor implements ItemProcessorInterface
     {
         $title = $item->get('title');
         $item['title'] = implode($item['title']);
-
         return $item;
     }
 }
