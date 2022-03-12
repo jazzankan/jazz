@@ -70,7 +70,7 @@ class EventController extends Controller
         $lastevent = Event::all()->last();
 
         //För att få in id i artist_event-tabellen
-        if(isset($request['selectedartists'])) {
+        if($request['selectedartists'] != null) {
             $selart = explode(",",$request['selectedartists']);
             $selart = array_unique($selart);
             $lastevent->artists()->attach($selart);
@@ -138,7 +138,7 @@ class EventController extends Controller
             'artistnames' => 'nullable | string'
 
         ]);
-        if(isset($request['selectedartists'])) {
+        if($request['selectedartists'] != null) {
             $event->artists()->detach();
             $selart = explode(",",$request['selectedartists']);
             $selart = array_unique($selart);
