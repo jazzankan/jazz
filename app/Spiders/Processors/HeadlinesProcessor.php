@@ -10,6 +10,7 @@ use RoachPHP\Support\Configurable;
 class HeadlinesProcessor implements ItemProcessorInterface
 {
     use Configurable;
+
     public function processItem(ItemInterface $item): ItemInterface
     {
         $title = $item->get('title');

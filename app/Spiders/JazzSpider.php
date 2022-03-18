@@ -51,6 +51,5 @@ class JazzSpider extends BasicSpider
             //'title' => $response->filter('h3')->text()
             'title' => $response->filter('h3')->extract(['_text'])
         ]);
-
     }
 }

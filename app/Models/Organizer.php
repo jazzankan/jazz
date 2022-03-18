@@ -19,4 +19,9 @@ class Organizer extends Model
     {
         return $this->hasMany(Event::class);
     }
+
+    public function spiderdata()
+    {
+        return $this->hasOne(SpiderData::class);
+    }
 }
