@@ -14,7 +14,7 @@ use App\Spiders\Processors\HeadlinesProcessor;
 class JazzSpider extends BasicSpider
 {
     public array $startUrls = [
-        'https://www.sh.se'
+        'https://crescendomusik.se/'
     ];
 
     public array $downloaderMiddleware = [
@@ -49,7 +49,7 @@ class JazzSpider extends BasicSpider
 
         yield $this->item([
             //'title' => $response->filter('h3')->text()
-            'title' => $response->filter('h3')->extract(['_text'])
+            'title' => $response->filter('h2')->extract(['_text'])
         ]);
     }
 }

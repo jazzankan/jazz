@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('spider_data', function (Blueprint $table) {
             $table->id();
             $table->foreignId('organizer_id')->constrained();
-            $table->text('newstring');
-            $table->text('oldstring');
+            $table->unsignedTinyInteger('warning');
+            $table->text('headstring');
             $table->date('fixdate');
-            $table->text('comment')->nullable();
+            $table->string('comment')->nullable();
             $table->timestamps();
         });
     }
