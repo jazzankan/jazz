@@ -20,7 +20,7 @@ class HeadlinesProcessor implements ItemProcessorInterface
         $jazz = new JazzSpider;
         $jazzurls = $jazz->startUrls;
         //$spiderid = SpiderData::where()
-
+        //ghghh
         //Från databasen
         $oldstring = SpiderData::all('headstring')->first();
         if($item['title'] != $oldstring){
