@@ -3,9 +3,11 @@
 namespace App\Spiders\Processors;
 
 //use Log;
+use App\Models\SpiderData;
 use RoachPHP\ItemPipeline\ItemInterface;
 use RoachPHP\ItemPipeline\Processors\ItemProcessorInterface;
 use RoachPHP\Support\Configurable;
+use App\Spiders\JazzSpider;
 
 class HeadlinesProcessor implements ItemProcessorInterface
 {
@@ -15,6 +17,15 @@ class HeadlinesProcessor implements ItemProcessorInterface
     {
         $title = $item->get('title');
         $item['title'] = implode($item['title']);
+        $jazz = new JazzSpider;
+        $jazzurls = $jazz->startUrls;
+        //$spiderid = SpiderData::where()
+
+        //Från databasen
+        $oldstring = SpiderData::all('headstring')->first();
+        if($item['title'] != $oldstring){
+        }
+        dd($oldstring);
         return $item;
     }
 }
