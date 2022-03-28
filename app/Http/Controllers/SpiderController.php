@@ -26,7 +26,6 @@ class SpiderController extends Controller
         //$headlines = $item->all();
         //$headlines = $headlines->item();
         //$headlines = $headlines->getResponse();
-        //dd($jazzitem);
         return view('spiders.index');
     }
 }
