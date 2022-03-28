@@ -13,11 +13,11 @@ class SpiderController extends Controller
     public function index()
     {
         Roach::startSpider(JazzSpider::class);
-        $jazz = new JazzSpider;
-        $jazzurls = $jazz->startUrls;
-        $jazzrequest = $jazz->getInitialRequests();
+        //$jazz = new JazzSpider;
+        //$jazzurls = $jazz->startUrls;
+        //$jazzrequest = $jazz->getInitialRequests();
         //$jazzprocessor = new HeadlinesProcessor;
-        $jazzitem = ItemInterface::class::all();
+        //$jazzitem = ItemInterface::class::all();
         //$jazzitem = $jazz->item()->all();
         //$jazzitem = $response->getBody();
         //$jazzitem = $jazz->all();
@@ -26,7 +26,7 @@ class SpiderController extends Controller
         //$headlines = $item->all();
         //$headlines = $headlines->item();
         //$headlines = $headlines->getResponse();
-        dd($jazzitem);
+        //dd($jazzitem);
         return view('spiders.index');
     }
 }
