@@ -13,24 +13,21 @@ use App\Spiders\JazzSpider;
 class HeadlinesProcessor implements ItemProcessorInterface
 {
     use Configurable;
-
     public function processItem(ItemInterface $item): ItemInterface
     {
-        $item['title'] = implode($item['title']);
         $jazz = new JazzSpider;
         $jazzurls = $jazz->startUrls;
         $spiderdata = SpiderData::all();
         $orgdata = Organizer::all();
-        foreach ($jazzurls as $url) {
-            $org = $orgdata->where('orglink', $url)->first();
-            $spiderrecord = $spiderdata->where('organizer_id', $org->id)->first();
-                if ($item['title'] != $spiderrecord['headstring']) {
-                    $spiderrecord->headstring = $item['title'];
-                    $spiderrecord->warning = 1;
-                    $spiderrecord->save();
-                }
-            }
-        //comm
-        return $item;
+        $url = $jazzurls[1];
+        $org = $orgdata->where('orglink', $url)->first();
+        $spiderrecord = $spiderdata->where('organizer_id', $org->id)->first();
+        $title = implode($item['title']);
+        if ($title != $spiderrecord->headstring) {
+            $spiderrecord->headstring = $title;
+            $spiderrecord->warning = 1;
+            $spiderrecord->save();
+        }
+            return $item;
     }
 }
