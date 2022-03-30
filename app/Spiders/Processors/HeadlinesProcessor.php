@@ -9,6 +9,7 @@ use RoachPHP\ItemPipeline\ItemInterface;
 use RoachPHP\ItemPipeline\Processors\ItemProcessorInterface;
 use RoachPHP\Support\Configurable;
 use App\Spiders\JazzSpider;
+use RoachPHP\Http\Response;
 
 class HeadlinesProcessor implements ItemProcessorInterface
 {
@@ -19,7 +20,8 @@ class HeadlinesProcessor implements ItemProcessorInterface
         $jazzurls = $jazz->startUrls;
         $spiderdata = SpiderData::all();
         $orgdata = Organizer::all();
-        $url = $jazzurls[1];
+        $response = new Response;
+        $url = $response->getUri();
         $org = $orgdata->where('orglink', $url)->first();
         $spiderrecord = $spiderdata->where('organizer_id', $org->id)->first();
         $title = implode($item['title']);
