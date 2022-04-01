@@ -11,6 +11,7 @@ use RoachPHP\Support\Configurable;
 use App\Spiders\JazzSpider;
 use RoachPHP\Http\Response;
 
+
 class HeadlinesProcessor implements ItemProcessorInterface
 {
     use Configurable;
@@ -20,8 +21,8 @@ class HeadlinesProcessor implements ItemProcessorInterface
         $jazzurls = $jazz->startUrls;
         $spiderdata = SpiderData::all();
         $orgdata = Organizer::all();
-        $response = new Response;
-        $url = $response->getUri();
+        $url = $this->request();
+        $url = Response::getUri();
         $org = $orgdata->where('orglink', $url)->first();
         $spiderrecord = $spiderdata->where('organizer_id', $org->id)->first();
         $title = implode($item['title']);
