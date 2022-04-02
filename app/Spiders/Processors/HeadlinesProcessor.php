@@ -9,7 +9,9 @@ use RoachPHP\ItemPipeline\ItemInterface;
 use RoachPHP\ItemPipeline\Processors\ItemProcessorInterface;
 use RoachPHP\Support\Configurable;
 use App\Spiders\JazzSpider;
-use RoachPHP\Http\Response;
+//use RoachPHP\Http\Response;
+use RoachPHP\Http\Request;
+//use Symfony\Component\DomCrawler\Crawler;
 
 
 class HeadlinesProcessor implements ItemProcessorInterface
@@ -21,8 +23,7 @@ class HeadlinesProcessor implements ItemProcessorInterface
         $jazzurls = $jazz->startUrls;
         $spiderdata = SpiderData::all();
         $orgdata = Organizer::all();
-        $url = $this->request();
-        $url = Response::getUri();
+        $resp  = Request::getUri();
         $org = $orgdata->where('orglink', $url)->first();
         $spiderrecord = $spiderdata->where('organizer_id', $org->id)->first();
         $title = implode($item['title']);
