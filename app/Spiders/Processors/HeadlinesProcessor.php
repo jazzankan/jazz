@@ -24,6 +24,7 @@ class HeadlinesProcessor implements ItemProcessorInterface
         $spiderdata = SpiderData::all();
         $orgdata = Organizer::all();
         $resp  = Request::getUri();
+        $budda = "knasmarkering";
         $org = $orgdata->where('orglink', $url)->first();
         $spiderrecord = $spiderdata->where('organizer_id', $org->id)->first();
         $title = implode($item['title']);
