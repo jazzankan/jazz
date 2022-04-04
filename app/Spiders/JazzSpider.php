@@ -46,11 +46,10 @@ class JazzSpider extends BasicSpider
     {
         // todo...
         //$title = $response->filter('h2')->text();
-        //yield $response->filter('h2')->text();
-
         yield $this->item([
             //'title' => $response->filter('h3')->text()
-            'title' => $response->filter('h2')->extract(['_text'])
+            'title' => $response->filter('h2')->extract(['_text']),
+            'url' => $response->getUri()
         ]);
     }
 }
