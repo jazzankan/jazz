@@ -15,7 +15,10 @@ class JazzSpider extends BasicSpider
 {
     public array $startUrls = [
         'https://crescendomusik.se/',
-        'https://jazzensvanner.com/'
+        'https://jazzensvanner.com/',
+        'https://www.unityjazz.se/program',
+        'https://nefertiti.se/nefertiti_event/',
+        'https://jazzimalmo.com/'
     ];
 
     public array $downloaderMiddleware = [
@@ -48,7 +51,8 @@ class JazzSpider extends BasicSpider
         //$title = $response->filter('h2')->text();
         yield $this->item([
             //'title' => $response->filter('h3')->text()
-            'title' => $response->filter('h2')->extract(['_text']),
+            'title1' => $response->filter('h1')->extract(['_text']),
+            'title2' => $response->filter('h2')->extract(['_text']),
             'url' => $response->getUri()
         ]);
     }

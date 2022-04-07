@@ -24,9 +24,11 @@ class HeadlinesProcessor implements ItemProcessorInterface
         $url = $item['url'];
         $org = $orgdata->where('orglink', $url)->first();
         $spiderrecord = $spiderdata->where('organizer_id', $org->id)->first();
-        $title = implode($item['title']);
-        if ($title != $spiderrecord->headstring) {
-            $spiderrecord->headstring = $title;
+        $title1 = implode($item['title1']);
+        $title2 = implode($item['title2']);
+        $conctitle = $title1 . $title2;
+        if ($conctitle != $spiderrecord->headstring) {
+            $spiderrecord->headstring = $conctitle;
             $spiderrecord->warning = 1;
             $spiderrecord->save();
         }
