@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Spiders\JazzSpider;
-use RoachPHP\Http\Response;
-use RoachPHP\ItemPipeline\ItemInterface;
+use App\Models\Organizer;
+use App\Models\SpiderData;
 use RoachPHP\Roach;
 
 
@@ -14,6 +14,10 @@ class SpiderController extends Controller
     {
         Roach::startSpider(JazzSpider::class);
 
-        return view('spiders.index');
+     $orgcheck = Organizer::whereHas('spiderdata', function($q){
+         $q->where('warning', '1');
+     })->get();
+
+        return view('spiders.index')->with('orgcheck',$orgcheck);
     }
 }
