@@ -14,6 +14,7 @@
                     <p><a class="text-blue-800 text-xl" href="/places">Visa orter</a></p>
                     <p><a class="text-blue-800 text-xl" href="/organizers/create">Skapa organisatör</a></p>
                     <p><a class="text-blue-800 text-xl" href="/organizers">Visa organisatörer</a></p>
+                    <p><a class="text-blue-800 text-xl" href="/spiders">Kolla uppdateringar</a></p>
                     <p><a class="text-blue-800 text-xl" href="/artists/create">Skapa artist</a></p>
                     <p><a class="text-blue-800 text-xl" href="/artists">Visa artister</a></p>
                     <div>
