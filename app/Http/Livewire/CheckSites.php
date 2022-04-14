@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Organizer;
+use App\Models\SpiderData;
 
 class CheckSites extends Component
 {
@@ -16,9 +17,11 @@ class CheckSites extends Component
         })->get();
     }
 
-    function clearsite()
+    function clearsite($orgid)
     {
-
+        $spiderdata = SpiderData::where('organizer_id',$orgid)->first();
+        $spiderdata->warning = 0;
+        $spiderdata->save();
     }
 
     public function render()
