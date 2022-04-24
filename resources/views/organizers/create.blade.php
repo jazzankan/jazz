@@ -44,6 +44,12 @@
                                    class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
                                    value="{{ old('note') }}" name="note"/>
                         </div>
+                        <div>
+                            <label for="note">Bevakningsintervall. Dagar:</label><br>
+                            <input type="text"
+                                   class="w-16 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
+                                   value="{{ old('interval') }}" name="interval"/>
+                        </div>
                         <button type="submit" class="btn-blue">Skapa</button>
                     </div>
                 </form>
