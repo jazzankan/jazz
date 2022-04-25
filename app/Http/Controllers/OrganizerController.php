@@ -57,7 +57,7 @@ class OrganizerController extends Controller
            $warning = 0;
            $headstring = "not spidered";
            $interval = $request['interval'];
-           SpiderData::create(['orgid' => $orgid,'warning' => $warning, 'headstring' => $headstring, 'interval' => $interval]);
+           SpiderData::create(['organizer_id' => $orgid,'warning' => $warning, 'headstring' => $headstring, 'dayinterval' => $interval]);
         }
 
         return redirect('/organizers');
