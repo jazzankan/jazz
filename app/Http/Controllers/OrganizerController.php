@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Organizer;
+use App\Models\SpiderData;
 use App\Models\Place;
 use App\Models\Event;
 use Illuminate\Http\Request;
@@ -50,6 +51,14 @@ class OrganizerController extends Controller
             'note'    => 'nullable | max:200'
         ]);
         $memory = Organizer::create($attributes);
+
+        if($request['interval'] != null){
+           $orgid = Organizer::latest()->first()->value('id');
+           $warning = 0;
+           $headstring = "not spidered";
+           $interval = $request['interval'];
+           SpiderData::create(['orgid' => $orgid,'warning' => $warning, 'headstring' => $headstring, 'interval' => $interval]);
+        }
 
         return redirect('/organizers');
     }
