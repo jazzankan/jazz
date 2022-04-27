@@ -49,7 +49,7 @@ class OrganizerController extends Controller
             'place_id' => 'required | integer',
             'comment' => 'nullable | max:200',
             'note'    => 'nullable | max:200',
-            'interval' => 'nullable | integer'
+            'interval' => 'required | integer'
         ]);
         array_pop($attributes);
         $memory = Organizer::create($attributes);
@@ -114,9 +114,17 @@ class OrganizerController extends Controller
             'orglink' => 'nullable',
             'place_id' => 'required | integer',
             'comment' => 'nullable | max:200',
-            'note'    => 'nullable | max:200'
+            'note'    => 'nullable | max:200',
+            'interval' => 'required | integer'
         ]);
         $organizer->update(request(['orgname','orglink','place_id','comment','note']));
+
+        if($request['interval'] != null){
+            $interval = $request['interval'];
+            $organizer->spiderdata->update(['dayinterval' => $interval]);
+        }
+
+
 
         return redirect('/organizers');
     }
