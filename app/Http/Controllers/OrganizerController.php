@@ -48,12 +48,14 @@ class OrganizerController extends Controller
             'orglink' => 'nullable',
             'place_id' => 'required | integer',
             'comment' => 'nullable | max:200',
-            'note'    => 'nullable | max:200'
+            'note'    => 'nullable | max:200',
+            'interval' => 'nullable | integer'
         ]);
+        array_pop($attributes);
         $memory = Organizer::create($attributes);
 
         if($request['interval'] != null){
-           $orgid = Organizer::latest()->first()->value('id');
+           $orgid = Organizer::latest()->value('id');
            $warning = 0;
            $headstring = "not spidered";
            $interval = $request['interval'];
