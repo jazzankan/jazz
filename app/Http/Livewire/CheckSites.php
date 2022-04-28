@@ -13,6 +13,7 @@ class CheckSites extends Component
 
     function mount()
     {
+
         $this->organizers = Organizer::whereHas('spiderdata', function ($q) {
             $q->where('warning', '1');
         })->get();
