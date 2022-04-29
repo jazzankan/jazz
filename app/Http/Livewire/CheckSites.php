@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Organizer;
 use App\Models\SpiderData;
+use Carbon\Carbon;
 
 class CheckSites extends Component
 {
@@ -13,11 +14,25 @@ class CheckSites extends Component
 
     function mount()
     {
-
+        $this->checkinterval();
         $this->organizers = Organizer::whereHas('spiderdata', function ($q) {
             $q->where('warning', '1');
         })->get();
         $this->hideid = 0;
+    }
+
+    function checkinterval(){
+        $allorgs = Organizer::all();
+        foreach ($allorgs as $ao) {
+            if ($ao->spiderdata != null) {
+                //dd($ao->spiderdata->updated_at->addDay($ao->spiderdata->dayinterval)->toDateString());
+                //dd(Carbon::today()->toDateString());
+                if ($ao->spiderdata->updated_at->addDay($ao->spiderdata->dayinterval)->toDateString() < Carbon::today()->toDateString()) {
+                    $ao->spiderdata->warning = 1;
+                    $ao->spiderdata->save();
+                }
+            }
+        }
     }
 
     function clearsite($orgid)
