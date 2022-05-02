@@ -121,7 +121,15 @@ class OrganizerController extends Controller
 
         if($request['interval'] != null){
             $interval = $request['interval'];
-            $organizer->spiderdata->update(['dayinterval' => $interval]);
+            if(!$organizer->spiderdata){
+                $orgid = $organizer->id;
+                $warning = 0;
+                $headstring = "not spidered";
+                SpiderData::create(['organizer_id' => $orgid,'warning' => $warning, 'headstring' => $headstring, 'dayinterval' => $interval]);
+            }
+            else {
+                $organizer->spiderdata->update(['dayinterval' => $interval]);
+            }
         }
 
 

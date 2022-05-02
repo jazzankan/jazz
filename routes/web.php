@@ -7,6 +7,7 @@ use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\OrganizerController;
 use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\SpiderController;
+use App\Http\Controllers\LinkController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,6 +42,9 @@ Route::resource('organizers', OrganizerController::class)
     ->middleware(['auth']);
 
 Route::resource('artists', ArtistController::class)
+    ->middleware(['auth']);
+
+Route::resource('links', LinkController::class)
     ->middleware(['auth']);
 
 Route::get('/spiders', [SpiderController::class, 'index'])

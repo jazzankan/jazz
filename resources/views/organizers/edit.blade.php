@@ -45,11 +45,13 @@
                                    value="{{ $organizer->note }}" name="note"/>
                         </div>
                         <div>
-                            <label for="note">Bevakningsintervall. Dagar:</label><br>
+                            <label for="note">Bevakningsintervall - dagar.<br>
+                            Använd 0 för ingen bevakning:
+                            </label><br>
                             <input type="text"
                                    maxlength="3"
                                    class="w-16 mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
-                                   value="{{ $organizer->spiderdata->dayinterval }}" name="interval"/>
+                                   @if($organizer->spiderdata != null)value="{{ $organizer->spiderdata->dayinterval }}" @endif name="interval"/>
                         </div>
                         <div>
                         <input type="checkbox" class="custom-control-input" id="delete" name="delete" value="delete"> Ta bort organisatören.

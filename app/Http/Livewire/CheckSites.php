@@ -24,7 +24,7 @@ class CheckSites extends Component
     function checkinterval(){
         $allorgs = Organizer::all();
         foreach ($allorgs as $ao) {
-            if ($ao->spiderdata != null) {
+            if ($ao->spiderdata != null && $ao->spiderdata->dayinterval != 0) {
                 //dd($ao->spiderdata->updated_at->addDay($ao->spiderdata->dayinterval)->toDateString());
                 //dd(Carbon::today()->toDateString());
                 if ($ao->spiderdata->updated_at->addDay($ao->spiderdata->dayinterval)->toDateString() < Carbon::today()->toDateString()) {
