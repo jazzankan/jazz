@@ -35,7 +35,25 @@ class LinkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request['external'] = filter_var($request['external'], FILTER_VALIDATE_BOOLEAN);
+        $request['prio'] = filter_var($request['prio'], FILTER_VALIDATE_BOOLEAN);
+
+         if($request['pubstop'] == null){
+             $request['pubstop'] = "2082-01-01";
+         }
+
+        $attributes = request()->validate([
+            'linktext' => 'required | min:3',
+            'url' => 'required | url',
+            'comment' => 'nullable',
+            'external' => 'required | boolean',
+            'prio' => 'required | boolean',
+            'pubstart' => 'required | date',
+            'pubstop' => 'required | date'
+        ]);
+        $memory = Link::create($attributes);
+
+        return redirect('/dashboard');
     }
 
     /**
