@@ -14,7 +14,8 @@ class LinkController extends Controller
      */
     public function index()
     {
-        //
+        $links = Link::all()->sortBy('linktext');
+        return view('links.index')->with('links',$links);
     }
 
     /**
