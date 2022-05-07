@@ -17,6 +17,7 @@
                     <p><a class="text-blue-800 text-xl" href="/spiders">Kolla uppdateringar</a></p>
                     <p><a class="text-blue-800 text-xl" href="/artists/create">Skapa artist</a></p>
                     <p><a class="text-blue-800 text-xl" href="/artists">Visa artister</a></p>
+                    <p><a class="text-blue-800 text-xl" href="/links/">Visa länkar</a></p>
                     <p><a class="text-blue-800 text-xl" href="/links/create">Skapa länk</a></p>
                     <div>
                     <livewire:place />

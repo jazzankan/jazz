@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Event;
-use App\Models\Place;
+use App\Models\Link;
 use Carbon\Carbon;
 
 class PublicController extends Controller
@@ -16,7 +15,7 @@ class PublicController extends Controller
 
     public function index()
     {
-
-        return view('publicviews.index');
+        $links = Link::all();
+        return view('publicviews.index')->with('links',$links);
     }
 }

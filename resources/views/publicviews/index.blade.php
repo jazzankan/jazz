@@ -12,6 +12,11 @@
         </div>
         <div class="m-2.5 md:border-l md:border-red-700 md:col-span-3 order-3">
             <h1 class=" mv-2 text-3xl text-center">Länkar</h1>
+            <ul class="mt-5 px-6">
+                @foreach($links as $link)
+                    <li><a href="{{ $link->url }}" @if($link->external)target="_blank" @endif class="text-blue-800">{{ $link->linktext }}</a></li>
+                @endforeach
+            </ul>
         </div>
     </div>
     </div>
