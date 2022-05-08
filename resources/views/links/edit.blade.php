@@ -7,7 +7,8 @@
     <div class="py-12">
         <div class="max-w-screen-lg mx-auto sm:px-6 lg:px-8">
             <div>
-                <form method="post" action="{{ route('links.update') }}">
+                <form method="post" action="{{ route('links.update',$link->id) }}">
+                    @method('PATCH')
                     @csrf
                     <div class="pl-2">
                         <div>
@@ -29,26 +30,26 @@
                                    value="{{ $link->comment }}" name="comment"/>
                         </div>
                         <div class="form-check">
-                            <input checked="checked" value="true" name="external"  class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="flexCheckDefault">
+                            <input @if($link->external)checked="checked"@endif value="true" name="external"  class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox">
                             <label class=" mb-4 form-check-label inline-block text-gray-800" for="flexCheckDefault">
                                 Extern länk
                             </label>
                         </div>
                         <div class="form-check">
-                            <input value="true" name="prio" class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="flexCheckDefault">
+                            <input @if($link->prio)checked="checked" @endif value="true" name="prio" class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox">
                             <label class="form-check-label inline-block text-gray-800" for="flexCheckDefault">
                                 Priolänk
                             </label>
                         </div>
                         <div class="mt-4"><label for="day">Startdatum:</label><br>
                             <input type="date" class="border rounded-lg mb-6"
-                                   value="{{ old('pubstart') != null ? old('pubstart') : ''}}" name="pubstart">
+                                   value="{{ $link->pubstart != null ? $link->pubstart : ''}}" name="pubstart">
                         </div>
-                        <div class="mt-1"><label for="day">Slutdatum (lämna blank om evig):</label><br>
+                        <div class="mt-1"><label for="day">Slutdatum:</label><br>
                             <input type="date" class="border rounded-lg mb-6"
-                                   value="{{ old('pubstop') != null ? old('pubstop') : ''}}" name="pubstop">
+                                   value="{{ $link->pubstop != null ? $link->pubstop : ''}}" name="pubstop">
                         </div>
-                        <button type="submit" class="btn-blue">Skapa</button>
+                        <button type="submit" class="btn-blue">Uppdatera</button>
                     </div>
                 </form>
             </div>

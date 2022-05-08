@@ -76,7 +76,7 @@ class LinkController extends Controller
      */
     public function edit(Link $link)
     {
-        //
+        return view('links.edit')->with('link',$link);
     }
 
     /**
@@ -88,7 +88,22 @@ class LinkController extends Controller
      */
     public function update(Request $request, Link $link)
     {
-        //
+
+        $request['external'] = filter_var($request['external'], FILTER_VALIDATE_BOOLEAN);
+        $request['prio'] = filter_var($request['prio'], FILTER_VALIDATE_BOOLEAN);
+
+        $attributes = request()->validate([
+            'linktext' => 'required | min:3',
+            'url' => 'required | url',
+            'comment' => 'nullable',
+            'external' => 'required | boolean',
+            'prio' => 'required | boolean',
+            'pubstart' => 'required | date',
+            'pubstop' => 'required | date'
+        ]);
+        $link->update(request(['linktext','url','comment','external','prio','pubstart','pubstop']));
+
+        return redirect('/links');
     }
 
     /**
