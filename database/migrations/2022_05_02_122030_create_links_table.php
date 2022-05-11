@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('linktext');
             $table->string('url');
-            $table->string('comment');
+            $table->string('comment')->nullable();
             $table->boolean('external');
             $table->boolean('prio');
             $table->date('pubstart');

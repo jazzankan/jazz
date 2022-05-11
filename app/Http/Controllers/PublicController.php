@@ -15,7 +15,7 @@ class PublicController extends Controller
 
     public function index()
     {
-        $links = Link::all();
+        $links = Link::all()->sortByDesc('prio')->sortByDesc('created_at');
         return view('publicviews.index')->with('links',$links);
     }
 }
