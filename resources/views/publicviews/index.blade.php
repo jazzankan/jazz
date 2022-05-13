@@ -13,6 +13,7 @@
         <div class="m-2.5 md:border-l md:border-red-700 md:col-span-3 order-3">
             <h1 class=" mv-2 text-3xl text-center">Länkar</h1>
             <ul class="mt-5 px-6">
+                    <li class="mt-4"><a class="text-blue-800 text-lg" href="/about">Om denna sajt<a></a><br>Vad kan du förvänta dig?</li>
                 @foreach($links as $link)
                     <li class="mt-4"><a href="{{ $link->url }}" @if($link->external)target="_blank" @endif class="text-blue-800 @if($link->prio) text-lg @endif">{{ $link->linktext }}</a><br>{{ $link->comment }}</li>
                 @endforeach
