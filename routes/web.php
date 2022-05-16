@@ -26,9 +26,15 @@ Route::get('/welcome', function () {
 Route::get('/', [PublicController::class,'index'])
     ->name('pubstart');
 
+
 Route::get('/about', function () {
     return view('publicviews.about');
 });
+Route::get('/contact', function () {
+    return view('publicviews.contact');
+});
+Route::post('/', [PublicController::class,'store'])
+    ->name('contact');
 
 require __DIR__.'/auth.php';
 
