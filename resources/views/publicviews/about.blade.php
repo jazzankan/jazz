@@ -17,5 +17,6 @@
         <p class="mt-6">Hälsningar
             Anders Fredriksson
         </p>
+        <p class="my-6"><a class="btn-blue" href="/">Tillbaka till startsidan</a></p>
     </div>
 </x-guest-layout>

@@ -23,10 +23,12 @@ class PublicController extends Controller
     {
 
         $attributes = request()->validate([
-           // 'linktext' => 'required | min:3',
+           'name' => 'required | min:3',
+            'email' => 'required | email',
+            'body' => 'required | min:6',
+            'human' => 'required | max:3 | in:sex,6,SEX,Sex'
         ]);
 
-
-        return view('/dashboard');
+        return view('publicviews.thanks');
     }
 }

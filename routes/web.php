@@ -33,7 +33,7 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('publicviews.contact');
 });
-Route::post('/', [PublicController::class,'store'])
+Route::post('/contact', [PublicController::class,'store'])
     ->name('contact');
 
 require __DIR__.'/auth.php';
