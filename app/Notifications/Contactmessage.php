@@ -41,9 +41,11 @@ class Contactmessage extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->greeting('Hallå Anders!')
+                    ->line('Jazztider har kontaktats av ' . $this->Contactmessage['name'])
+                    ->line('med mailadress ' . $this->Contactmessage['email'])
+                    ->line('Budskapet är:')
+                    ->line($this->Contactmessage['body']);
     }
 
     /**

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Link;
 use Carbon\Carbon;
+use App\Models\User;
+use App\Notifications\Contactmessage;
 
 class PublicController extends Controller
 {
@@ -28,6 +30,9 @@ class PublicController extends Controller
             'body' => 'required | min:6',
             'human' => 'required | max:3 | in:sex,6,SEX,Sex'
         ]);
+        $user = User::where('name','Anders')->first();
+
+        $user->notify(new Contactmessage($attributes));
 
         return view('publicviews.thanks');
     }
