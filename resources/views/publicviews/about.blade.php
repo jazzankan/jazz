@@ -4,11 +4,10 @@
         <p class="max-w-prose">
             Jazztider listar kommande jazzkonserter i Sverige. Alla? Nej, glöm det! Jag är ensam om att sköta den här
             sajten,
-            vilket sätter gränser. Vita fläckar finns det många på min karta! Jag är själv bosatt utanför Stockholm,
-            så det kan säkert bli geografisk slagsida också. Jag listar helt enkelt det jag hittar och som jag bedömer
+            vilket sätter gränser. Vita fläckar kommer det att finnas många på kartan, speciellt i början! Jag är själv bosatt utanför Stockholm,
+            så det kan säkert bli geografisk slagsida också. Jag listar helt enkelt det jag hittar och som bedöms
             som
-            relevant. Och vad är jazz? Just i den här kontexten är det jag (igen) som bestämmer det. Annars kan man ha
-            långa diskussioner om saken.
+            relevant. Och vad är egentligen jazz? Just i den här kontexten är det jag (igen) som bestämmer det.
             Vissa vänner av improvisationsmusik kan rent av ogilla jazzbegreppet. Det förstår jag, men väljer ändå att
             använda det, förhoppningsvis
             på ett inte alltför inskränkande sätt.
