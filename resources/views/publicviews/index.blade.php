@@ -5,11 +5,13 @@
                 <h1 class="mv-2 text-3xl text-center">Tips</h1>
                 <div class="grid place-items-center">
                     <div class=" px-4 py-4 bg-gray-100 mt-5 w-5/6 rounded-md overflow-hidden shadow-lg">
-                        <p class="font-bold">Kolla upp Stockholm Jazz Festival!</p>
+                        <p class="font-bold">Stockholm Jazz Festival!</p>
+                        <p>14-23 Oktober</p>
                         <p><a class="text-blue-800" href="https://stockholmjazz.se/" target="_blank">https://stockholmjazz.se/</a></p>
                     </div>
                     <div class=" px-4 py-4 bg-gray-100 mt-5 w-5/6 rounded-md overflow-hidden shadow-lg">
-                        <p class="font-bold">Kolla upp Stockholm Jazz Festival!</p>
+                        <p class="font-bold">Stockholm Jazz Festival!</p>
+                        <p>14-23 Oktober</p>
                         <p><a class="text-blue-800" href="https://stockholmjazz.se/" target="_blank">https://stockholmjazz.se/</a></p>
                     </div>
                 </div>

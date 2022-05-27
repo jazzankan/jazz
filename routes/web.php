@@ -57,6 +57,9 @@ Route::resource('artists', ArtistController::class)
 Route::resource('links', LinkController::class)
     ->middleware(['auth']);
 
+Route::resource('tips', TipController::class)
+    ->middleware(['auth']);
+
 Route::get('/spiders', [SpiderController::class, 'index'])
     ->middleware(['auth']);
 

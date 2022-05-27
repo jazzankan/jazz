@@ -15,6 +15,7 @@ class LinkController extends Controller
     public function index()
     {
         $links = Link::all()->sortBy('linktext');
+
         return view('links.index')->with('links',$links);
     }
 
@@ -54,7 +55,7 @@ class LinkController extends Controller
         ]);
         $memory = Link::create($attributes);
 
-        return redirect('/dashboard');
+        return redirect('/links');
     }
 
     /**
