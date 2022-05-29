@@ -17,11 +17,9 @@ class PublicController extends Controller
 
     public function index()
     {
-        /*$links = Link::all()->sortBy(function ($data, $key) {
-            return $data['prio'].$data['linktext'];
-        });*/
-        $links = Link::all();
-        dd($links);
+        $today = Carbon::now()->format('Y-m-d');
+
+        $links = Link::where('pubstart','<=',$today)->where('pubstop','>',$today)->orderBy('prio','DESC')->orderBy('linktext','ASC')->get();
 
         return view('publicviews.index')->with('links',$links);
     }
