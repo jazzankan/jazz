@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('tips', function (Blueprint $table) {
             $table->id();
+            $table->string('headline');
+            $table->string('body');
+            $table->date('pubstart');
+            $table->date('pubstop');
             $table->timestamps();
         });
     }
