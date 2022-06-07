@@ -8,6 +8,7 @@ use App\Http\Controllers\OrganizerController;
 use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\SpiderController;
 use App\Http\Controllers\LinkController;
+use App\Http\Controllers\TipController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes

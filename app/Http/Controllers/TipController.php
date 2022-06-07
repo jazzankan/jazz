@@ -24,7 +24,7 @@ class TipController extends Controller
      */
     public function create()
     {
-        //
+        return view('tips.create');
     }
 
     /**

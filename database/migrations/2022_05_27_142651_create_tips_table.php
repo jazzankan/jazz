@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('headline');
             $table->string('body');
+            $table->string('link')->nullable();;
             $table->date('pubstart');
             $table->date('pubstop');
             $table->timestamps();
