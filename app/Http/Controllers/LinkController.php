@@ -53,7 +53,7 @@ class LinkController extends Controller
             'pubstart' => 'required | date',
             'pubstop' => 'required | date'
         ]);
-        $memory = Link::create($attributes);
+        Link::create($attributes);
 
         return redirect('/links');
     }

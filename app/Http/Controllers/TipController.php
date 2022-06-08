@@ -14,7 +14,9 @@ class TipController extends Controller
      */
     public function index()
     {
-        //
+        $tips = Tip::all()->sortByDesc('created_at');
+
+        return view('tips.index')->with('links',$links);
     }
 
     /**
@@ -35,7 +37,20 @@ class TipController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request['pubstop'] == null){
+            $request['pubstop'] = "2082-01-01";
+        }
+
+        $attributes = request()->validate([
+            'headline' => 'required | min:3',
+            'body' => 'required | min:3',
+            'link' => 'required | min:12',
+            'pubstart' => 'required | date',
+            'pubstop' => 'required | date'
+        ]);
+        Tip::create($attributes);
+
+        return redirect('/');
     }
 
     /**
