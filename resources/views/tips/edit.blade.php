@@ -1,42 +1,42 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Skapa tips') }}
+            {{ __('Redigera tips tips') }}
         </h2>
     </x-slot>
     <div class="py-12">
         <div class="max-w-screen-lg mx-auto sm:px-6 lg:px-8">
             <div>
-                <form method="post" action="{{ route('tips.store') }}">
+                <form method="post" action="{{ route('tips.update',$tip->id) }}">
                     @csrf
                     <div class="pl-2">
                         <div>
                             <label for="headline">Rubrik:</label><br>
                             <input type="text"
                                    class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
-                                   value="{{ old('headline') }}" name="headline"/>
+                                   value="{{ $tip->headline }}" name="headline"/>
                         </div>
                         <div>
                             <label for="body">Text:</label><br>
                             <input type="text"
                                    class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
-                                   value="{{ old('body') }}" name="body"/>
+                                   value="{{ $tip->body }}" name="body"/>
                         </div>
                         <div>
                             <label for="link">Länk:</label><br>
                             <input type="text"
                                    class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
-                                   value="{{ old('link') }}" name="link"/>
+                                   value="{{ $tip->link }}" name="link"/>
                         </div>
                         <div class="mt-4"><label for="day">Startdatum:</label><br>
                             <input type="date" class="border rounded-lg mb-6"
-                                   value="{{ old('pubstart') != null ? old('pubstart') : ''}}" name="pubstart">
+                                   value="{{ $tip->pubstart != null ? $tip->pubstart : ''}}" name="pubstart">
                         </div>
                         <div class="mt-1"><label for="day">Slutdatum (lämna blank om evig):</label><br>
                             <input type="date" class="border rounded-lg mb-6"
-                                   value="{{ old('pubstop') != null ? old('pubstop') : ''}}" name="pubstop">
+                                   value="{{ $tip->pubstop != null ? $tip->pubstop : ''}}" name="pubstop">
                         </div>
-                        <button type="submit" class="btn-blue">Skapa</button>
+                        <button type="submit" class="btn-blue">Skicka</button>
                     </div>
                 </form>
             </div>

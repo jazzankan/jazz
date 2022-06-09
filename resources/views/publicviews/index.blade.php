@@ -4,20 +4,17 @@
             <div class="m-2.5 md:border-r md:border-red-700 md:col-span-3 order-2 md:order-1">
                 <h1 class="mv-2 text-3xl text-center">Tips</h1>
                 <div class="grid place-items-center">
-                    <div class=" px-4 py-4 bg-gray-100 mt-5 w-5/6 rounded-md overflow-hidden shadow-lg">
-                        <p class="font-bold">Stockholm Jazz Festival!</p>
-                        <p>14-23 Oktober</p>
-                        <p><a class="text-blue-800" href="https://stockholmjazz.se/" target="_blank">https://stockholmjazz.se/</a></p>
-                    </div>
-                    <div class=" px-4 py-4 bg-gray-100 mt-5 w-5/6 rounded-md overflow-hidden shadow-lg">
-                        <p class="font-bold">Stockholm Jazz Festival!</p>
-                        <p>14-23 Oktober</p>
-                        <p><a class="text-blue-800" href="https://stockholmjazz.se/" target="_blank">https://stockholmjazz.se/</a></p>
-                    </div>
+                        @foreach($tips as $tip)
+                            <div class=" px-4 py-4 bg-gray-100 mt-5 w-5/6 rounded-md overflow-hidden shadow-lg">
+                            <p class="font-bold">{{ $tip->headline }}</p>
+                            <p>{{ $tip->body }}</p>
+                            <p><a class="text-blue-800" href="{{ $tip->link }}" target="_blank">{{ $tip->link }}</a></p>
+                            </div>
+                        @endforeach
                 </div>
             </div>
             <div class="m-2.5 md:col-span-6 order-1 md:order-2">
-                <h1 class="mv-2 mb-4 text-3xl text-center">Evenemang</h1>
+                <h1 class="mv-2 mb-4 text-3xl text-center">Spelningar</h1>
                 <div>
                     @livewire('pub-eventsearch')
                 </div>

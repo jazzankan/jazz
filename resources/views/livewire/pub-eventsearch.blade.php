@@ -11,7 +11,7 @@
         <select
             wire:model="query"
             class="form-select form-select-sm appearance-none px-1 py-1 pr-6 text-sm border border-solid border-gray-300 rounded m-0 mb-1">
-            <option value="">---Organisatör---</option>
+            <option value="">---Arrangör---</option>
             @foreach($organizers as $o)
                 <option value="{{ $o->orgname }}">{{ $o->orgname }}</option>
             @endforeach
@@ -29,7 +29,7 @@
                 @foreach($events as $event)
                     <li class="events pl-2 py-2.5"><b>{{ $event->name }}</b><br>
                         Ort: {{ $event->place->municipality }}<br>
-                        Org: {{ $event->organizer->orgname }}<br>
+                        Arr: {{ $event->organizer->orgname }}<br>
                         Tid: <b>{{ $event->day }}</b> @if($event->timeofday) , klockan: {{ $event->timeofday }}@endif<br>
                         @if($event->comment){{ $event->comment }}<br>@endif
                         @if($event->link)

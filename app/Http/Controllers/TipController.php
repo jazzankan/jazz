@@ -16,7 +16,7 @@ class TipController extends Controller
     {
         $tips = Tip::all()->sortByDesc('created_at');
 
-        return view('tips.index')->with('links',$links);
+        return view('tips.index')->with('tips',$tips);
     }
 
     /**
@@ -72,7 +72,7 @@ class TipController extends Controller
      */
     public function edit(Tip $tip)
     {
-        //
+        return view('tips.edit')->with('tip',$tip);
     }
 
     /**

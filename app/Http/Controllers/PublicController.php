@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tip;
 use Illuminate\Http\Request;
 use App\Models\Link;
 use Carbon\Carbon;
@@ -20,8 +21,9 @@ class PublicController extends Controller
         $today = Carbon::now()->format('Y-m-d');
 
         $links = Link::where('pubstart','<=',$today)->where('pubstop','>',$today)->orderBy('prio','DESC')->orderBy('linktext','ASC')->get();
+        $tips = Tip::all()->sortByDesc('created_at');
 
-        return view('publicviews.index')->with('links',$links);
+        return view('publicviews.index')->with('links',$links)->with('tips',$tips);
     }
 
     public function store(Request $request)
