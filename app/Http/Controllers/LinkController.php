@@ -89,6 +89,10 @@ class LinkController extends Controller
      */
     public function update(Request $request, Link $link)
     {
+        if($request['delete'] === 'delete'){
+            $this->destroy($link);
+            return redirect('/links');
+        }
 
         $request['external'] = filter_var($request['external'], FILTER_VALIDATE_BOOLEAN);
         $request['prio'] = filter_var($request['prio'], FILTER_VALIDATE_BOOLEAN);
@@ -115,6 +119,6 @@ class LinkController extends Controller
      */
     public function destroy(Link $link)
     {
-        //
+        $link->delete();
     }
 }

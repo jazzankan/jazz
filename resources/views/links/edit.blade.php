@@ -49,6 +49,10 @@
                             <input type="date" class="border rounded-lg mb-6"
                                    value="{{ $link->pubstop != null ? $link->pubstop : ''}}" name="pubstop">
                         </div>
+                        <div class="my-4">
+                            <input type="checkbox" class="custom-control-input" id="delete" name="delete" value="delete">
+                            <label class="custom-control-label" for="delete">Ta bort länken helt!</label>
+                        </div>
                         <button type="submit" class="btn-blue">Uppdatera</button>
                     </div>
                 </form>

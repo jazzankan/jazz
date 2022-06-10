@@ -8,6 +8,7 @@
         <div class="max-w-screen-lg mx-auto sm:px-6 lg:px-8">
             <div>
                 <form method="post" action="{{ route('tips.update',$tip->id) }}">
+                    @method('PATCH')
                     @csrf
                     <div class="pl-2">
                         <div>
@@ -35,6 +36,12 @@
                         <div class="mt-1"><label for="day">Slutdatum (lämna blank om evig):</label><br>
                             <input type="date" class="border rounded-lg mb-6"
                                    value="{{ $tip->pubstop != null ? $tip->pubstop : ''}}" name="pubstop">
+                        </div>
+                        <div class="form-group">
+                            <div class="my-4">
+                                <input type="checkbox" class="custom-control-input" id="delete" name="delete" value="delete">
+                                <label class="custom-control-label" for="delete">Ta bort tipset helt!</label>
+                            </div>
                         </div>
                         <button type="submit" class="btn-blue">Skicka</button>
                     </div>

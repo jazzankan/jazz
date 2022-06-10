@@ -50,7 +50,7 @@ class TipController extends Controller
         ]);
         Tip::create($attributes);
 
-        return redirect('/');
+        return redirect('/tips');
     }
 
     /**
@@ -84,7 +84,25 @@ class TipController extends Controller
      */
     public function update(Request $request, Tip $tip)
     {
-        //
+        if($request['delete'] === 'delete'){
+            $this->destroy($tip);
+            return redirect('/tips');
+        }
+
+        if($request['pubstop'] == null){
+            $request['pubstop'] = "2082-01-01";
+        }
+
+        $attributes = request()->validate([
+            'headline' => 'required | min:3',
+            'body' => 'required | min:3',
+            'link' => 'required | min:12',
+            'pubstart' => 'required | date',
+            'pubstop' => 'required | date'
+        ]);
+        $tip->update(request(['headline','body','link','pubstart','pubstop']));
+
+        return redirect('/tips');
     }
 
     /**
@@ -95,6 +113,6 @@ class TipController extends Controller
      */
     public function destroy(Tip $tip)
     {
-        //
+        $tip->delete();
     }
 }
