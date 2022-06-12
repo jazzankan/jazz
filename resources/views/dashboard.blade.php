@@ -8,17 +8,13 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <p><a class="text-blue-800 text-xl" href="/events/create">Skapa evenemang</a></p>
-                    <p><a class="text-blue-800 text-xl" href="/events">Visa evenemang</a></p>
-                    <p><a class="text-blue-800 text-xl" href="/places/create">Skapa ort</a></p>
-                    <p><a class="text-blue-800 text-xl" href="/places">Visa orter</a></p>
-                    <p><a class="text-blue-800 text-xl" href="/organizers/create">Skapa organisatör</a></p>
-                    <p><a class="text-blue-800 text-xl" href="/organizers">Visa organisatörer</a></p>
+                    <p><a class="text-blue-800 text-xl" href="/events">Konserter</a></p>
+                    <p><a class="text-blue-800 text-xl" href="/places">Orter</a></p>
+                    <p><a class="text-blue-800 text-xl" href="/organizers">Arrangörer</a></p>
+                    <p><a class="text-blue-800 text-xl" href="/artists">Artister</a></p>
+                    <p><a class="text-blue-800 text-xl" href="/links/">Länkar</a></p>
+                    <p><a class="text-blue-800 text-xl" href="/tips/">Tips</a></p>
                     <p><a class="text-blue-800 text-xl" href="/spiders">Kolla uppdateringar</a></p>
-                    <p><a class="text-blue-800 text-xl" href="/artists/create">Skapa artist</a></p>
-                    <p><a class="text-blue-800 text-xl" href="/artists">Visa artister</a></p>
-                    <p><a class="text-blue-800 text-xl" href="/links/">Visa länkar</a></p>
-                    <p><a class="text-blue-800 text-xl" href="/links/create">Skapa länk</a></p>
                     <div>
                     <livewire:place />
                     </div>
