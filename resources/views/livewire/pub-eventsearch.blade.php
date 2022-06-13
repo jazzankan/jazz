@@ -30,16 +30,23 @@
                     <li class="events pl-2 py-2.5"><b>{{ $event->name }}</b><br>
                         Ort: {{ $event->place->municipality }}<br>
                         Arr: {{ $event->organizer->orgname }}<br>
-                        Tid: <b>{{ $event->day }}</b> @if($event->timeofday) , klockan: {{ $event->timeofday }}@endif<br>
-                        @if($event->comment){{ $event->comment }}<br>@endif
+                        Tid: <span class="bg-indigo-50 px-2"><b>{{ $event->day }}</b></span> @if($event->timeofday)
+                            , klockan: {{ $event->timeofday }}
+                        @endif<br>
+                        @if($event->comment)
+                            {{ $event->comment }}>
+                        @endif
                         @if($event->link)
-                            <a target="_blank" class="text-blue-800 underline hover:bg-red-200" href="{{ $event->link }}">Mer info</a>@endif</li>
+                            <a target="_blank" class="text-blue-800 underline hover:bg-red-200"
+                               href="{{ $event->link }}">Mer info</a>
+                        @endif
                 @endforeach
-                    @if($events->links()){{ $events->links() }}@endif
+                @if($events->links())
+                    {{ $events->links() }}
+                @endif
             @else
                 <li class="text-red-800 font-bold text-center">Ingen träff!</li>
             @endif
-            <hr>
-            @endif
         </ul>
+    @endif
 </div>
