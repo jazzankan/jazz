@@ -30,7 +30,7 @@
                     <li class="events pl-2 py-2.5"><b>{{ $event->name }}</b><br>
                         Ort: {{ $event->place->municipality }}<br>
                         Arr: {{ $event->organizer->orgname }}<br>
-                        Tid: <span class="bg-indigo-50 px-2"><b>{{ $event->day }}</b></span> @if($event->timeofday)
+                        Tid: <span class="bg-indigo-50 px-2 text-red-800"><b>{{ $event->day }}</b></span> @if($event->timeofday)
                             , klockan: {{ $event->timeofday }}
                         @endif<br>
                         @if($event->comment)
