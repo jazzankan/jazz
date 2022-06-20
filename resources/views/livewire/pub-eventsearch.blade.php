@@ -1,6 +1,7 @@
 <div class="text-center">
     <p><span class="mr-2">Filtrera på:</span>
         <select
+            wire:select="changeplace"
             wire:model="query"
             class="form-select form-select-sm appearance-none px-1 py-1 pr-6 text-sm border border-solid border-gray-300 rounded m-0 mb-1">
             <option value="">--- Ort ---</option>
