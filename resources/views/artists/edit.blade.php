@@ -12,10 +12,16 @@
                     @csrf
                     <div class="pl-2">
                         <div>
-                            <label for="name">Namn:</label><br>
+                            <label for="firstname">Förnamn:</label><br>
                             <input type="text"
                                    class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
-                                   value="{{ $artist->name }}" name="name"/>
+                                   value="{{ $artist->firstname }}" name="firstname"/>
+                        </div>
+                        <div>
+                            <label for="name">Efternamn:</label><br>
+                            <input type="text"
+                                   class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
+                                   value="{{ $artist->lastname }}" name="lastname"/>
                         </div>
                         <div>
                             <label for="name">Instrument:</label><br>

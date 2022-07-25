@@ -13,7 +13,7 @@
             <p class="text-lg mt-10">De 10 senast skapade av totalt {{ $totalartists->count() }}:</p>
             <ul>
                 @foreach($artists as $a)
-                    <li><a href="/artists/{{ $a->id }}/edit" class="text-blue-800">{{ $a->name }}</a>, {{ $a->instrument }} @if($a->note) <span class="text-sm"> |Anteckning: {{ $a->note }}</span>@endif</li>
+                    <li><a href="/artists/{{ $a->id }}/edit" class="text-blue-800">{{ $a->firstname }} {{$a->lastname}}</a>, {{ $a->instrument }} @if($a->note) <span class="text-sm"> |Anteckning: {{ $a->note }}</span>@endif</li>
                 @endforeach
             </ul>
         </div>
