@@ -9,7 +9,7 @@
         <ul>
             @if(count($artists)> 0)
                 @foreach($artists as $a)
-                    <li><a href="/artists/{{ $a->id }}/edit" class="text-blue-800">{{ $a->firstname }} {{ $a->lastname }}</a>, {{ $a->instrument }} @if($a->note) <span class="text-sm"> |Anteckning: {{ $a->note }}</span>@endif</li>
+                    <li><a href="/artists/{{ $a->id }}/edit" class="text-blue-800">{{ $a->name }}</a>, {{ $a->instrument }} @if($a->note) <span class="text-sm"> |Anteckning: {{ $a->note }}</span>@endif</li>
                 @endforeach
             @else
                 <li class="text-red-800 font-bold">Ingen träff!</li>

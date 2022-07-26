@@ -11,16 +11,10 @@
                     @csrf
                     <div class="pl-2">
                         <div>
-                            <label for="firstname">Förnamn:</label><br>
+                            <label for="name">Namn:</label><br>
                             <input type="text"
                                    class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
-                                   value="{{ old('firstname') }}" name="firstname"/>
-                        </div>
-                        <div>
-                            <label for="lastname">Efternamn:</label><br>
-                            <input type="text"
-                                   class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
-                                   value="{{ old('lastname') }}" name="lastname"/>
+                                   value="{{ old('name') }}" name="name"/>
                         </div>
                         <div>
                             <label for="name">Instrument:</label><br>

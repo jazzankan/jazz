@@ -23,8 +23,7 @@ class SearchArtists extends Component
 
     public function updatedQuery()
     {
-            $this->artists = Artist:: where('firstname', 'like', '%' . $this->query . '%')
-                ->orWhere('lastname','like','%' . $this->query . '%')
+            $this->artists = Artist:: where('name', 'like', '%' . $this->query . '%')
                 ->orWhere('instrument','like','%' . $this->query . '%')
                 ->get();
     }

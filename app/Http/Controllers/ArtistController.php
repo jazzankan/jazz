@@ -39,8 +39,7 @@ class ArtistController extends Controller
     public function store(Request $request)
     {
         $attributes = request()->validate([
-            'firstname' => 'required | min:2',
-            'lastname' => 'required | min:2',
+            'name' => 'required | min:4',
             'instrument' => 'nullable | min:3',
             'memberof' => 'nullable | min:3',
             'comment' => 'nullable | max:200',
@@ -83,15 +82,14 @@ class ArtistController extends Controller
     public function update(Request $request, Artist $artist)
     {
         $attributes = request()->validate([
-            'firstname' => 'required | min:2',
-            'lastname' => 'required | min:2',
+            'name' => 'required | min:4',
             'instrument' => 'nullable | min:3',
             'memberof' => 'nullable | min:3',
             'comment' => 'nullable | max:200',
             'note'    => 'nullable | max:200'
         ]);
 
-        $artist->update(request(['firstname','lastname','instrument','memberof','comment','note']));
+        $artist->update(request(['name','instrument','memberof','comment','note']));
 
         return redirect('/artists');
     }
