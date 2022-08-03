@@ -17,7 +17,7 @@ class ArtistController extends Controller
         $artists = Artist::latest()->limit(10)->get();
         $totalartists = Artist::all();
 
-        return view('/artists.index')->with('artists',$artists)->with('totalartists',$totalartists);
+        return view('/artists.index')->with('artists', $artists)->with('totalartists', $totalartists);
     }
 
     /**
@@ -33,7 +33,7 @@ class ArtistController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -43,7 +43,7 @@ class ArtistController extends Controller
             'instrument' => 'nullable | min:3',
             'memberof' => 'nullable | min:3',
             'comment' => 'nullable | max:200',
-            'note'    => 'nullable | max:200'
+            'note' => 'nullable | max:200'
         ]);
         Artist::create($attributes);
 
@@ -53,7 +53,7 @@ class ArtistController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Artist  $artist
+     * @param \App\Models\Artist $artist
      * @return \Illuminate\Http\Response
      */
     public function show(Artist $artist)
@@ -64,32 +64,41 @@ class ArtistController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Artist  $artist
+     * @param \App\Models\Artist $artist
      * @return \Illuminate\Http\Response
      */
     public function edit(Artist $artist)
     {
-        return view('artists.edit')->with('artist',$artist);
+        return view('artists.edit')->with('artist', $artist);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Artist  $artist
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Artist $artist
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Artist $artist)
     {
+        if ($request['delete'] === 'delete') {
+            if ($artist->events()->get()->isEmpty()) {
+                $this->destroy($artist);
+                return redirect('/artists');
+            } else {
+                return redirect()->back()->withErrors(['message1' => 'Kan inte tas bort, eftersom konsert finns.']);
+            }
+        }
+
         $attributes = request()->validate([
             'name' => 'required | min:4',
             'instrument' => 'nullable | min:3',
             'memberof' => 'nullable | min:3',
             'comment' => 'nullable | max:200',
-            'note'    => 'nullable | max:200'
+            'note' => 'nullable | max:200'
         ]);
 
-        $artist->update(request(['name','instrument','memberof','comment','note']));
+        $artist->update(request(['name', 'instrument', 'memberof', 'comment', 'note']));
 
         return redirect('/artists');
     }
@@ -97,11 +106,11 @@ class ArtistController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Artist  $artist
+     * @param \App\Models\Artist $artist
      * @return \Illuminate\Http\Response
      */
     public function destroy(Artist $artist)
     {
-        //
+        $artist->delete();
     }
 }
