@@ -34,7 +34,7 @@
                             , klockan: {{ $event->timeofday }}
                         @endif<br>
                         @if($event->comment)
-                            {{ $event->comment }}>
+                            {{ $event->comment }}<br>
                         @endif
                         @if($event->link)
                             <a target="_blank" class="text-blue-800 underline hover:bg-red-200"

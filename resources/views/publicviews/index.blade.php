@@ -26,9 +26,9 @@
                         förvänta dig?
                     </li>
                     <li class="mt-4"><a class="text-blue-800 text-lg" href="/contact">Kontakta oss</a></li>
-                    <li class="mt-4">Externa:</li>
+                    <li class="mt-4 text-sm">Externa:</li>
                     @foreach($links as $link)
-                        <li><a href="{{ $link->url }}" @if($link->external)target="_blank"
+                        <li class="mt-4"><a href="{{ $link->url }}" @if($link->external)target="_blank"
                                             @endif class="text-blue-800 @if($link->prio) text-lg @endif">{{ $link->linktext }}</a><br>{{ $link->comment }}
                         </li>
                     @endforeach
