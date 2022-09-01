@@ -1,5 +1,5 @@
 <div class="text-center">
-    <p><span class="mr-2">Filtrera på:</span>
+    <p><span class="mr-2"></span>
         <select
             wire:model="query"
             class="form-select form-select-sm appearance-none px-1 py-1 pr-6 text-sm border border-solid border-gray-300 rounded m-0 mb-1">
@@ -16,7 +16,7 @@
                 <option value="{{ $o->orgname }}">{{ $o->orgname }}</option>
             @endforeach
         </select></p>
-    <p class="mb-1"><span class="mr-6">Sök på:</span>
+    <p class="mb-1">
         <input type="text"
                autocomplete="off"
                onclick="this.value=''"
