@@ -125,6 +125,11 @@ class EventController extends Controller
     {
        // Notera att Livewiremodulen använder alternativ rad för x-data om man kommer från editsidan.
 
+        if($request['delete'] === 'delete'){
+                $this->destroy($event);
+                return redirect('/events');
+        }
+
         $attributes = request()->validate([
             'name' => 'required | min:3',
             'place_id' => 'required | integer',
@@ -157,6 +162,6 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        $event->delete();
     }
 }

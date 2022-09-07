@@ -54,7 +54,7 @@
                                    @if($organizer->spiderdata != null)value="{{ $organizer->spiderdata->dayinterval }}" @endif name="interval"/>
                         </div>
                         <div>
-                        <input type="checkbox" class="custom-control-input" id="delete" name="delete" value="delete"> Ta bort organisatören.
+                        <input type="checkbox" class="custom-control-input" id="delete" name="delete" value="delete"> Ta bort arrangören.
                         </div>
                         <button type="submit" class="btn-blue mt-4">Uppdatera</button>
                     </div>
