@@ -11,8 +11,6 @@ use Livewire\WithPagination;
 
 class PubEventsearch extends Component
 {
-    use WithPagination;
-
     public $query;
     protected $events;
     public $places;
@@ -51,7 +49,6 @@ class PubEventsearch extends Component
                 $query->where('name', 'like', '%' . $this->query . '%')
                     ->where('day', '>=', $this->today);
             });
-
     }
 
     public function render()
