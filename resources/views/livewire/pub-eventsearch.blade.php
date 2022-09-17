@@ -44,9 +44,9 @@
                 //@if($events->links())
                     {{ $events->links() }}
                 //@endif
-            //@else
+            @else
                 <li class="text-red-800 font-bold text-center">Ingen träff!</li>
-            //@endif
+            @endif
         </ul>
     @endif
 </div>
