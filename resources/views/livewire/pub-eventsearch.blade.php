@@ -42,7 +42,7 @@
                         @endif
                 @endforeach
                 @if($events->links())
-                    {{ $events->links() }}
+                    {{ $events->withQueryString()->links() }}
                 @endif
             @else
                 <li class="text-red-800 font-bold text-center">Ingen träff!</li>
