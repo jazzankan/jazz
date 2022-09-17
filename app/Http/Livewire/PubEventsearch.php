@@ -11,6 +11,8 @@ use Livewire\WithPagination;
 
 class PubEventsearch extends Component
 {
+    use WithPagination;
+
     public $query;
     protected $events;
     public $places;
