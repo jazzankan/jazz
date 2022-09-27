@@ -41,9 +41,6 @@
                                href="{{ $event->link }}">Mer info</a>
                         @endif
                 @endforeach
-                @if($events->links())
-                    {{ $events->links() }}
-                @endif
             @else
                 <li class="text-red-800 font-bold text-center">Ingen träff!</li>
             @endif

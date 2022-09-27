@@ -17,7 +17,6 @@ class PubEventsearch extends Component
     public $organizers;
     public $today;
 
-
     function mount()
     {
         $this->today = Carbon::today();
@@ -54,6 +53,6 @@ class PubEventsearch extends Component
     public function render()
     {
         return view('livewire.pub-eventsearch',
-            ['events' => $this->events->orderBy('day')->paginate(20)]);
+            ['events' => $this->events->orderBy('day')->get()]);
     }
 }
