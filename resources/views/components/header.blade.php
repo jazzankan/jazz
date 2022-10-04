@@ -3,12 +3,11 @@
         <p class="truncate m-auto align-middle text-red-600 ml-2 md:ml-28">
             <span class="text-4xl leading-relaxed md:leading-loose md:text-6xl"
                   style="font-family: 'Gloria Hallelujah',cursive !important;"><a href="/">Jazztider</a></span><span
-                class="ml-6 font-bold md:text-2xl">Konserter i Sverige</span>
-            <span class="text-black text-sm md:hidden">
-            <a href="#tips">Tips</a>
-            <a href="#länkar">Länkar</a>
-        </span></p>
-
+                class="ml-6 font-bold md:text-2xl">Konserter i Sverige</span></p>
     </div>
+    <p style="font-family: 'Gloria Hallelujah',cursive !important;" class="text-sm text-center md:hidden">
+        <a class="text-blue-800 underline" href="#tips">Tips</a>
+        <a class=" ml-4 text-blue-800 underline" href="#länkar">Länkar</a>
+    </p>
 </header>
 
