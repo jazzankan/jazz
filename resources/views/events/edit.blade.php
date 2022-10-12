@@ -27,7 +27,7 @@
                             </select>
                         </div>
                         <div>
-                            <label for="organizer_id">Organisatör:</label><br>
+                            <label for="organizer_id">Arrangör:</label><br>
                             <select class="border mb-6" name="organizer_id">
                                 <option value="{{ $event->organizer_id }}">{{ $event->organizer->orgname }}</option>
                                 @foreach($organizers as $o)
