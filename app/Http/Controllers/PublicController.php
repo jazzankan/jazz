@@ -23,6 +23,15 @@ class PublicController extends Controller
         $links = Link::where('pubstart','<=',$today)->where('pubstop','>',$today)->orderBy('prio','DESC')->orderBy('linktext','ASC')->get();
         $tips = Tip::all()->sortByDesc('created_at');
 
+        if(!auth()->user()) {
+            $visitingnumber = file_get_contents("../counter.txt");
+            //Försök att förhindra reset med en  if-sats. Funktionen kan tydligen returnera en tom sträng ibland.
+            if($visitingnumber != "") {
+                $visitingnumber = (int)$visitingnumber + 1;
+                file_put_contents("../counter.txt", $visitingnumber);
+            }
+        }
+
         return view('publicviews.index')->with('links',$links)->with('tips',$tips);
     }
 

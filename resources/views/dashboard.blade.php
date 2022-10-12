@@ -15,6 +15,10 @@
                     <p><a class="text-blue-800 text-xl" href="/links/">Länkar</a></p>
                     <p><a class="text-blue-800 text-xl" href="/tips/">Tips</a></p>
                     <p><a class="text-blue-800 text-xl" href="/spiders">Kolla uppdateringar</a></p>
+                    <div class="mt-4">
+                        @php $visitingnumber = file_get_contents("../counter.txt");@endphp
+                        Antal externa besök sedan 2022-10-12: <b>{{ $visitingnumber }}</b>
+                    </div>
                     <div>
                     <livewire:place />
                     </div>
