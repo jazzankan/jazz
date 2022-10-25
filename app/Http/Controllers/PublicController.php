@@ -21,7 +21,7 @@ class PublicController extends Controller
         $today = Carbon::now()->format('Y-m-d');
 
         $links = Link::where('pubstart','<=',$today)->where('pubstop','>',$today)->orderBy('prio','DESC')->orderBy('linktext','ASC')->get();
-        $tips = Tip::all()->sortByDesc('created_at');
+        $tips = Tip::where('pubstart','<=',$today)->where('pubstop','>=',$today)->orderBy('created_at','DESC')->get();
 
         if(!auth()->user()) {
             $visitingnumber = file_get_contents("../counter.txt");

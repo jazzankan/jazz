@@ -96,7 +96,7 @@ class TipController extends Controller
         $attributes = request()->validate([
             'headline' => 'required | min:3',
             'body' => 'required | min:3',
-            'link' => 'min:12',
+            'link' => 'min:12 | nullable',
             'pubstart' => 'required | date',
             'pubstop' => 'required | date'
         ]);
