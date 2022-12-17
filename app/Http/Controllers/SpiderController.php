@@ -20,4 +20,9 @@ class SpiderController extends Controller
 
         return view('spiders.index')->with('orgcheck',$orgcheck);
     }
+    public function destroy(Spider $spider)
+    {
+        $spider->delete();
+    }
 }
+

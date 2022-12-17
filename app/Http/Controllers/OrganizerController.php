@@ -100,12 +100,14 @@ class OrganizerController extends Controller
     {
         $today = Carbon::today();
         if($request['delete'] === 'delete'){
-            if($organizer->events()->get()->isEmpty()){
+           if($organizer->events()->get()->isEmpty()){
+            $spider = SpiderData::where('organizer_id', $organizer->id)->get();
+            $organizer->spiderdata->destroy($spider);
             $this->destroy($organizer);
-                return redirect('/organizers');
-            }
-            else {
-                return redirect()->back()->withErrors(['message1'=>'Kan inte tas bort, eftersom konsert finns.']);
+            return redirect('/organizers');
+           }
+           else {
+               return redirect()->back()->withErrors(['message1'=>'Kan inte tas bort, eftersom konsert finns.']);
             }
         }
 
