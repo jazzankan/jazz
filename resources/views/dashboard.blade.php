@@ -17,7 +17,7 @@
                     <p><a class="text-blue-800 text-xl" href="/spiders">Kolla uppdateringar</a></p>
                     <div class="mt-4">
                         @php $visitingnumber = file_get_contents("../counter.txt");@endphp
-                        Antal besök sedan 2022-12-30: <b>{{ $visitingnumber }}</b>
+                        Antal besök externa sedan 2022-12-30: <b>{{ $visitingnumber }}</b>
                     </div>
                     <div>
                     <livewire:place />
