@@ -8,7 +8,7 @@
                             <div class=" px-4 py-4 bg-gray-100 mt-5 w-5/6 rounded-md overflow-hidden shadow-lg">
                             <p class="font-bold">{{ $tip->headline }}</p>
                             <p>{{ $tip->body }}</p>
-                            <p><a class="text-blue-800" href="{{ $tip->link }}" target="_blank">{{ $tip->link }}</a></p>
+                            <p><a class="text-blue-800" href="{{ $tip->link }}" target="_blank">Mer info</a></p>
                             </div>
                         @endforeach
                 </div>
