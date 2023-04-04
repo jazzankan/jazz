@@ -25,8 +25,7 @@
 
 
                     <div style="text-align: center">
-                        <p class="mt-7 text-sm"></p>>
-                        <hr>
+                        <p class="mt-7 text-sm"></p>
                         <p>Du är inloggad!</p>
                     </div>
                 </div>
