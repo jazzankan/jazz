@@ -20,12 +20,15 @@
                         Antal besök sedan 2022-12-30: <b>{{ $visitingnumber }}</b>
                     </div>
                     <div>
-                    <livewire:place />
+                        <livewire:place/>
                     </div>
 
 
                     <div style="text-align: center">
-                    <p class="mt-7 text-sm"><hr>Du är inloggad!</p>
+                        <p class="mt-7 text-sm"></p>>
+                        <hr>
+                        <p>Du är inloggad!</p>
+                    </div>
                 </div>
             </div>
         </div>
