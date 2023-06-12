@@ -9,6 +9,7 @@ use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\SpiderController;
 use App\Http\Controllers\LinkController;
 use App\Http\Controllers\TipController;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +23,10 @@ use App\Http\Controllers\TipController;
 
 Route::get('/welcome', function () {
     return view('welcome');
+});
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+   return $request->user();
 });
 
 Route::get('/', [PublicController::class,'index'])
