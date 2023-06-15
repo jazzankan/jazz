@@ -20,9 +20,9 @@
         <input type="text"
                autocomplete="off"
                onclick="this.value=''"
-               class="appearance-none text-sm w-1/2 mt-2 mb-0 px-2 py-1 border rounded-lg text-gray-700 border border-solid border-gray-300 focus:outline-none focus:border-green-500"
+               class="appearance-none text-sm w-1/4 mt-2 mb-0 px-2 py-1 border rounded-lg text-gray-700 border border-solid border-gray-300 focus:outline-none focus:border-green-500"
                value="" name="search" placeholder="Konsertnamn, artister..." wire:model="query"
-               wire:click="newsearch"/></p>
+               wire:click="newsearch"/> <input type="date" class="text-sm border rounded-lg border-solid border-gray-300 text-gray-700 mt-2 mb-0 px-2 py-1"> </p>
     @if(strlen($query)>2 || $query === "")
         <ul class="bg-white rounded-lg text-left mt-4">
             @if(count($events)> 0)
