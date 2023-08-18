@@ -20,6 +20,7 @@ class PubEventsearch extends Component
     function mount()
     {
         $this->today = Carbon::today();
+        $this->today_string = $this->today->toDateString();
         $this->query = "";
         $this->events = Event::with(['place', 'organizer'])->where('day', '>=', $this->today)->orderby('day');
         $this->places = Place::all()->sortBy('municipality');
@@ -34,21 +35,31 @@ class PubEventsearch extends Component
 
     public function updatedQuery()
     {
-        $this->events = Event::with(['place', 'organizer', 'artists'])
-            ->where('name', 'like', '%' . $this->query . '%')->where('day', '>=', $this->today)
-            ->orWhereHas('place', function ($query) {
-                $query->where('municipality', 'like', '%' . $this->query . '%')
-                    ->where('day', '>=', $this->today);
-            })
-            ->orWhereHas('organizer', function ($query) {
-                $query->where('orgname', 'like', '%' . $this->query . '%')
-                    ->where('day', '>=', $this->today);
-            })
-            ->orWhereHas('artists', function ($query) {
-                $query->where('name', 'like', '%' . $this->query . '%')
-                    ->where('day', '>=', $this->today);
-            });
+        $datearr = explode("-",$this->query);
+        //checkdate requires mm/dd/yyyy
+
+        if(count($datearr) == 3 && checkdate($datearr[1],$datearr[2],$datearr[0])){
+            $this->events = Event::with(['place', 'organizer', 'artists'])->where('day', '>=', $this->query);
+        }
+        else {
+            $this->events = Event::with(['place', 'organizer', 'artists'])
+                ->where('name', 'like', '%' . $this->query . '%')->where('day', '>=', $this->today)
+                ->orWhereHas('place', function ($query) {
+                    $query->where('municipality', 'like', '%' . $this->query . '%')
+                        ->where('day', '>=', $this->today);
+                })
+                ->orWhereHas('organizer', function ($query) {
+                    $query->where('orgname', 'like', '%' . $this->query . '%')
+                        ->where('day', '>=', $this->today);
+                })
+                ->orWhereHas('artists', function ($query) {
+                    $query->where('name', 'like', '%' . $this->query . '%')
+                        ->where('day', '>=', $this->today);
+                });
+        }
     }
+
+
 
     public function render()
     {
