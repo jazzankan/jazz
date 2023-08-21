@@ -39,6 +39,9 @@ class PubEventsearch extends Component
         //checkdate requires mm/dd/yyyy
 
         if(count($datearr) == 3 && checkdate($datearr[1],$datearr[2],$datearr[0])){
+            if($this->query < $this->today_string){
+                $this->query = $this->today_string;
+            }
             $this->events = Event::with(['place', 'organizer', 'artists'])->where('day', '>=', $this->query);
         }
         else {
