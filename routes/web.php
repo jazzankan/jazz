@@ -9,6 +9,7 @@ use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\SpiderController;
 use App\Http\Controllers\LinkController;
 use App\Http\Controllers\TipController;
+use App\Http\Controllers\AboutController;
 use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
@@ -33,9 +34,11 @@ Route::get('/', [PublicController::class,'index'])
     ->name('pubstart');
 
 
-Route::get('/about', function () {
+/*Route::get('/about', function () {
     return view('publicviews.about');
-});
+});*/
+Route::get('/about', [AboutController::class,'index']);
+
 Route::get('/contact', function () {
     return view('publicviews.contact');
 });
@@ -65,6 +68,12 @@ Route::resource('links', LinkController::class)
 
 Route::resource('tips', TipController::class)
     ->middleware(['auth']);
+
+Route::get('/about/edit', [AboutController::class,'edit'])
+    ->middleware(['auth']);
+
+Route::patch('/about/update', [AboutController::class,'update'])
+    ->middleware(['auth'])->name('about.update');
 
 Route::get('/spiders', [SpiderController::class, 'index'])
     ->middleware(['auth']);
