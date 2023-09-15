@@ -59,7 +59,8 @@ class AboutController extends Controller
             'aboutheading' => 'required | min:3',
             'abouttext' => 'required | min:6',
         ]);
-        //$aboutentry = DB::table('about')->select('id','aboutheading','abouttext')->first();
+        // To get blue link
+        $request['abouttext'] = str_replace('a href', 'a class="text-blue-800" href', $request['abouttext']);
 
         $affected = DB::table('about')
             ->where('id', 1)

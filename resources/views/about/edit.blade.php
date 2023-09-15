@@ -19,11 +19,11 @@
                         </div>
                         <div>
                             <label for="body">Text:</label><br>
-                        <textarea id="abouttext" class="mb-6 w-5/6" name="abouttext">
+                        <textarea id="abouttext" class="tinyMce mb-6 w-5/6" rows="15" name="abouttext">
                             {{ $aboutentry->abouttext }}
                         </textarea>
                     </div>
-                        <button type="submit" class="btn-blue">Skicka</button>
+                        <button type="submit" class="btn-blue mt-3">Skicka</button>
                     </div>
                 </form>
             </div>
@@ -42,4 +42,13 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.tiny.cloud/1/rnox0zpq1lxyhd7mp4frpzujxi3ucuolnrem61k8g7lwq691/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea.tinyMce', // Replace this CSS selector to match the placeholder element for TinyMCE
+            plugins: 'code table lists link',
+            toolbar: 'undo redo | formatselect| bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table | link '
+        });
+    </script>
+
 </x-app-layout>
