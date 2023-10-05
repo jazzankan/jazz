@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Event;
 use App\Models\Place;
 use App\Models\Organizer;
 use Carbon\Carbon;
-use Livewire\WithPagination;
+//use Livewire\WithPagination;
 
 class PubEventsearch extends Component
 {
@@ -16,6 +16,7 @@ class PubEventsearch extends Component
     public $places;
     public $organizers;
     public $today;
+    public $today_string;
 
     function mount()
     {
@@ -29,8 +30,8 @@ class PubEventsearch extends Component
 
     public function newsearch()
     {
-        $this->events = Event::with(['place', 'organizer'])->where('day', '>=', $this->today)->orderby('day');
         $this->query = "";
+        $this->events = Event::with(['place', 'organizer'])->where('day', '>=', $this->today)->orderby('day');
     }
 
     public function updatedQuery()
