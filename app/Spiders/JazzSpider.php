@@ -14,11 +14,9 @@ use App\Spiders\Processors\HeadlinesProcessor;
 class JazzSpider extends BasicSpider
 {
     public array $startUrls = [
-        'https://crescendomusik.se/',
+        'https://jazzimalmo.com/',
         'https://jazzensvanner.com/',
-        'https://www.unityjazz.se/program',
-        'https://nefertiti.se/nefertiti_event/',
-        'https://jazzimalmo.com/'
+        'https://www.unityjazz.se/program'
     ];
 
     public array $downloaderMiddleware = [

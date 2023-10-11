@@ -26,7 +26,9 @@ class AddOrglinkToOrganizersTable extends Migration
     public function down()
     {
         Schema::table('organizers', function (Blueprint $table) {
-            //
+            Schema::table('organizers', function($table) {
+                $table->dropColumn('orglink');
+            });
         });
     }
 }

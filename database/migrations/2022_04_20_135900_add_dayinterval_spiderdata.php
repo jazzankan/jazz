@@ -25,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('spider-data', function($table) {
+            $table->dropColumn('dayinterval');
+        });
     }
 };
