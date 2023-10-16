@@ -14,7 +14,7 @@ class TipController extends Controller
      */
     public function index()
     {
-        $tips = Tip::all()->sortByDesc('created_at');
+        $tips = Tip::all()->sortBy('shownr');
 
         return view('tips.index')->with('tips',$tips);
     }

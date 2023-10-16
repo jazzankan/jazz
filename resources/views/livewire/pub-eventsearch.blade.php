@@ -20,13 +20,13 @@
         <input type="text"
                autocomplete="off"
                onclick="this.value=''"
-               class="appearance-none text-sm w-1/4 mt-2 mb-0 px-2 py-1 border rounded-lg text-gray-700 border border-solid border-gray-300 focus:outline-none focus:border-green-500"
+               class="appearance-none text-sm w-1/2 mt-2 mb-0 px-2 py-1 border rounded-lg text-gray-700 border border-solid border-gray-300 focus:outline-none focus:border-green-500"
                value="" name="search" placeholder="Konsertnamn, artister..." wire:model.live="query" wire:click="newsearch"/>
         <input wire:model.live="query" type="date" name="day" value="" min="{{ $this->today_string }}" class="text-sm border rounded-lg border-solid border-gray-300 text-gray-700 mt-2 mb-0 px-1 py-1"></p>
     @if(strlen($query)>2 || $query === "")
         <ul class="bg-white rounded-lg text-left mt-4">
             @if(count($events)> 0)
-                @foreach($events as $event)
+                @foreach($events->sortBy('day') as $event)
                     <li class="events pl-2 py-2.5"><b>{{ $event->name }}</b><br>
                         Ort: {{ $event->place->municipality }}<br>
                         Arr: {{ $event->organizer->orgname }}<br>

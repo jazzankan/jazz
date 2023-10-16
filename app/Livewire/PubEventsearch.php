@@ -23,7 +23,7 @@ class PubEventsearch extends Component
         $this->today = Carbon::today();
         $this->today_string = $this->today->toDateString();
         $this->query = "";
-        $this->events = Event::with(['place', 'organizer'])->where('day', '>=', $this->today)->orderby('day');
+        $this->events = Event::with(['place', 'organizer'])->where('day', '>=', $this->today)->orderBy('day');
         $this->places = Place::all()->sortBy('municipality');
         $this->organizers = Organizer::all()->sortBy('orgname');
     }
@@ -31,7 +31,7 @@ class PubEventsearch extends Component
     public function newsearch()
     {
         $this->query = "";
-        $this->events = Event::with(['place', 'organizer'])->where('day', '>=', $this->today)->orderby('day');
+        $this->events = Event::with(['place', 'organizer'])->where('day', '>=', $this->today)->orderBy('day');
     }
 
     public function updatedQuery()
@@ -68,6 +68,6 @@ class PubEventsearch extends Component
     public function render()
     {
         return view('livewire.pub-eventsearch',
-            ['events' => $this->events->orderBy('day')->get()]);
+            ['events' => $this->events->get()]);
     }
 }
