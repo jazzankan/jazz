@@ -68,6 +68,6 @@ class PubEventsearch extends Component
     public function render()
     {
         return view('livewire.pub-eventsearch',
-            ['events' => $this->events->get()]);
+            ['events' => $this->events->orderBy('day')->get()]);
     }
 }

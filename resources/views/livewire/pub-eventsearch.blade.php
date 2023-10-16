@@ -26,7 +26,7 @@
     @if(strlen($query)>2 || $query === "")
         <ul class="bg-white rounded-lg text-left mt-4">
             @if(count($events)> 0)
-                @foreach($events->sortBy('day') as $event)
+                @foreach($events as $event)
                     <li class="events pl-2 py-2.5"><b>{{ $event->name }}</b><br>
                         Ort: {{ $event->place->municipality }}<br>
                         Arr: {{ $event->organizer->orgname }}<br>
