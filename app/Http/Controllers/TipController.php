@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tip;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class TipController extends Controller
 {
@@ -14,8 +15,7 @@ class TipController extends Controller
      */
     public function index()
     {
-        $tips = Tip::all()->sortBy('shownr');
-
+        $tips = Tip::all()->sortBy([['shownr', 'asc'], ['created_at', 'desc']]);
         return view('tips.index')->with('tips',$tips);
     }
 
@@ -26,7 +26,8 @@ class TipController extends Controller
      */
     public function create()
     {
-        return view('tips.create');
+        $today = Carbon::now()->format('Y-m-d');
+        return view('tips.create')->with('today', $today);
     }
 
     /**
@@ -45,6 +46,7 @@ class TipController extends Controller
             'headline' => 'required | min:3',
             'body' => 'required | min:3',
             'link' => 'url | nullable',
+            'shownr' => 'required | max_digits:1',
             'pubstart' => 'required | date',
             'pubstop' => 'required | date'
         ]);
@@ -97,10 +99,11 @@ class TipController extends Controller
             'headline' => 'required | min:3',
             'body' => 'required | min:3',
             'link' => 'min:12 | nullable',
+            'shownr' => 'required | max_digits:1',
             'pubstart' => 'required | date',
             'pubstop' => 'required | date'
         ]);
-        $tip->update(request(['headline','body','link','pubstart','pubstop']));
+        $tip->update(request(['headline','body','link','shownr','pubstart','pubstop']));
 
         return redirect('/tips');
     }

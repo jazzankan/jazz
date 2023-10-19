@@ -24,17 +24,23 @@
                         </div>
                         <div>
                             <label for="link">Länk:</label><br>
-                            <input type="text"
-                                   class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
-                                   value="{{ old('link') }}" name="link"/>
+                                <input type="text"
+                                       class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
+                                       value="{{ old('link') }}" name="link"/>
                         </div>
+                        <label for="shownr">Visningsprio:</label><br>
+                        <select name="shownr" class="border rounded-lg">
+                            <option value=1 @selected(old('shownr') == 1)>1</option>
+                            <option value=2 @selected(old('shownr') == 2)>2</option>
+                            <option value=3 @selected(old('shownr') == null)>3</option>
+                        </select>
                         <div class="mt-4"><label for="day">Startdatum:</label><br>
                             <input type="date" class="border rounded-lg mb-6"
-                                   value="{{ old('pubstart') != null ? old('pubstart') : ''}}" name="pubstart">
+                                   value="{{ old('pubstart') != null ? old('pubstart') : $today }}" name="pubstart">
                         </div>
                         <div class="mt-1"><label for="day">Slutdatum (lämna blank om evig):</label><br>
                             <input type="date" class="border rounded-lg mb-6"
-                                   value="{{ old('pubstop') != null ? old('pubstop') : ''}}" name="pubstop">
+                                   value="{{ old('pubstop') != null ? old('pubstop') : '' }}" name="pubstop">
                         </div>
                         <button type="submit" class="btn-blue">Skapa</button>
                     </div>

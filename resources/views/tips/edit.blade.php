@@ -28,6 +28,10 @@
                             <input type="text"
                                    class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
                                    value="{{ $tip->link }}" name="link"/>
+
+                        </div>
+                        <div>
+                            <label for="shownr">Visningsprio:</label>
                         </div>
                         <div class="mt-4"><label for="day">Startdatum:</label><br>
                             <input type="date" class="border rounded-lg mb-6"

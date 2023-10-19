@@ -9,7 +9,7 @@
             <p class="mb-4"><a class="btn-blue" href="/tips/create">Skapa tips</a></p>
             <ul class="mt-10">
                 @foreach($tips as $tip)
-                    <li draggable="true"><a href="/tips/{{ $tip->id }}/edit" class="text-blue-800">{{ $tip->headline }}</a></li>
+                    <li draggable="true"><a href="/tips/{{ $tip->id }}/edit" class="text-blue-800">{{ $tip->headline }}, prio: {{ $tip->shownr }}</a></li>
                 @endforeach
             </ul>
         </div>
