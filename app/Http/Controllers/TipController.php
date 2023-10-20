@@ -13,10 +13,19 @@ class TipController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public $today;
+
+    public function set_date()
+    {
+        $this->today = Carbon::now()->format('Y-m-d');
+    }
+
+
     public function index()
     {
+        $this->set_date();
         $tips = Tip::all()->sortBy([['shownr', 'asc'], ['created_at', 'desc']]);
-        return view('tips.index')->with('tips',$tips);
+        return view('tips.index')->with('tips',$tips)->with('today',$this->today);
     }
 
     /**
@@ -26,8 +35,8 @@ class TipController extends Controller
      */
     public function create()
     {
-        $today = Carbon::now()->format('Y-m-d');
-        return view('tips.create')->with('today', $today);
+        $this->set_date();
+        return view('tips.create')->with('today', $this->today);
     }
 
     /**
