@@ -34,9 +34,10 @@ class EventController extends Controller
         $places = Place::all()->sortBy('municipality');
         $organizers = Organizer::all()->sortBy('orgname');
         $oldartistnames = "-";
+        $lastevent = Event::latest()->first();
 
 
-        return view('events.create')->with('places',$places)->with('organizers',$organizers);
+        return view('events.create')->with('places',$places)->with('organizers',$organizers)->with('lastevent', $lastevent);
     }
 
     /**
@@ -47,7 +48,7 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //Behövs vid error. Artistnames ska inte ini databasen.
+        //Behövs vid error. Artistnames ska inte in i databasen.
         $request['artistnames'] = str_replace("[","",$request['artistnames']);
         $request['artistnames']  = str_replace("]","",$request['artistnames']);
         $request['artistnames'] = str_replace('"',"'",$request['artistnames']);
