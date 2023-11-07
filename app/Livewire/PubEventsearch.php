@@ -31,6 +31,8 @@ class PubEventsearch extends Component
     public function newsearch()
     {
         $this->query = "";
+        $this->places = Place::all()->sortBy('municipality');
+        $this->organizers = Organizer::all()->sortBy('orgname');
         $this->events = Event::with(['place', 'organizer'])->where('day', '>=', $this->today)->orderBy('day');
     }
 
