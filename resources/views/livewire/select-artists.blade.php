@@ -31,7 +31,7 @@
                         </ul>
                         <p>Tillagda artister:<br>
                         <ul>
-                            <template x-for="name in new Set(names)">
+                            <template x-for="name in names">
                                 <li><span class="text-green-800" x-text="name + '&nbsp;'"></span><a href="#"
                                                                                                     style="display: inline-block;"
                                                                                                     class="text-sm text-blue-800"
