@@ -63,6 +63,8 @@ class PubEventsearch extends Component
                         ->where('day', '>=', $this->today);
                 });
         }
+        $this->organizers = Organizer::all()->sortBy('orgname');
+        $this->places = Place::all()->sortBy('municipality');
     }
 
 
@@ -70,6 +72,8 @@ class PubEventsearch extends Component
     public function render()
     {
         return view('livewire.pub-eventsearch',
-            ['events' => $this->events->orderBy('day')->get()]);
+            ['events' => $this->events->orderBy('day')->get(),
+                'organizers' => Organizer::all()->sortBy('orgname'),
+                'places' => Place::all()->sortBy('municipality')]);
     }
 }

@@ -9,7 +9,7 @@
             @endforeach
         </select>
         <select
-            wire:model.live="query"
+            wire:model.live = "query"
             class="form-select form-select-sm appearance-none px-1 py-1 pr-6 text-sm border border-solid border-gray-300 rounded m-0 mb-1">
             <option value="">---Arrangör---</option>
             @foreach($organizers as $o)
