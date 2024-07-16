@@ -16,7 +16,7 @@
                     <p><a class="text-blue-800 text-xl" href="/links/">Länkar</a></p>
                     <p><a class="text-blue-800 text-xl" href="/tips/">Tips</a></p>
                     <p><a class="text-blue-800 text-xl" href="/about/edit">Redigera sidan om sajten</a></p>
-                    <p><a class="text-blue-800 text-xl" href="https://pixe.la/v1/users/jazzankan/graphs/visits.html">Pixela statistik</a></p>
+                    <p><a class="text-blue-800 text-xl" target=”_blank” href="https://pixe.la/v1/users/jazzankan/graphs/visits.html">Pixela statistik</a></p>
                     <p><a class="text-blue-800 text-xl" href="/spiders">Kolla uppdateringar</a></p>
                     <div class="mt-4">
                         @php $visitingnumber = file_get_contents("../counter.txt");@endphp
