@@ -71,7 +71,10 @@ class PubEventsearch extends Component
 
     public function render()
     {
-        if($this->events != null) {
+        if($this->events == null) {
+            return "Ingen träff";
+        }
+        else {
             return view('livewire.pub-eventsearch',
                 ['events' => $this->events->orderBy('day')->get(),
                     'organizers' => Organizer::all()->sortBy('orgname'),
