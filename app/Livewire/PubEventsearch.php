@@ -73,7 +73,7 @@ class PubEventsearch extends Component
     {
         if($this->events == null) {
             return view('livewire.pub-eventsearch',
-                ['events' => Event::all()->sortBy('day'),
+                ['events' => Event::all()->first(),
                     'organizers' => Organizer::all()->sortBy('orgname'),
                     'places' => Place::all()->sortBy('municipality')]);
         }
