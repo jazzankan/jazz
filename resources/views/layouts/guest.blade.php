@@ -29,7 +29,7 @@
         </div>
         <footer class="text-center text-sm bg-gray-300 h-20 pt-2">
             Anders Fredriksson<br>
-            © 2022
+            © 2024
         </footer>
         @livewireScripts
     </body>

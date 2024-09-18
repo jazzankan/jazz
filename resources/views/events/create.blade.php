@@ -14,7 +14,7 @@
                     <input type="text"
                            @if(!old('name'))x-model="name" @endif
                            class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
-                           value="{{ old('name') }}" name="name"/>@if(!old('name'))
+                           value="{{ old('name') }}" name="name"/>@if(!old('name') && $lastevent)
                         <span class="ml-4 btn-small cursor-pointer"
                               x-on:click="name= '{{ $lastevent->name }}'">Senaste</span>
                     @endif
@@ -28,13 +28,13 @@
                         @foreach($places as $p)
                             <option value="{{ $p->id }}">{{ $p->municipality }}</option>
                         @endforeach
-                    </select>@if(!old('place_id'))
+                    </select>@if(!old('place_id') && $lastevent)
                         <span class="ml-4 btn-small cursor-pointer"
                               x-on:click="place_id={{ $lastevent->place_id }},chosen_place=true">Senaste</span>
-                    @endif
                     <div class="text-green-800" x-show="chosen_place">
                         Valt {{ $places->where('id',$lastevent->place_id)->first()->municipality }}.
                     </div>
+                    @endif
                     <p class="mt-0 mb-4"> @if (old('place_id'))
                             Vald
                             ort: {{ $places->where('id',old('place_id'))->first()->municipality }}
@@ -49,13 +49,13 @@
                         @foreach($organizers as $o)
                             <option value="{{ $o->id }}">{{ $o->orgname }}</option>
                         @endforeach
-                    </select> @if(!old('organizer_id'))
+                    </select> @if(!old('organizer_id') && $lastevent)
                         <span class="ml-4 btn-small cursor-pointer"
                               x-on:click="organizer_id = {{ $lastevent->organizer_id }}, chosen_arr=true">Senaste</span>
-                    @endif
-                    <div class="text-green-800" x-show="chosen_arr">
+                        <div class="text-green-800" x-show="chosen_arr">
                         Valt {{ $organizers->where('id',$lastevent->organizer_id)->first()->orgname }}.
                     </div>
+                    @endif
                     <p class="mt-0 mb-4"> @if (old('organizer_id'))
                             Vald
                             organisatör: {{ $organizers->where('id',old('organizer_id'))->first()->orgname }}
@@ -70,9 +70,9 @@
                     <div>
                         <label for="timeofday">Klockslag:</label><br>
                         <input type="text"
-                               @if(!old('timeofday'))x-model="timeofday" @endif
+                               @if(!old('timeofday') && $lastevent)x-model="timeofday" @endif
                                class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
-                               value="{{ old('timeofday') }}" name="timeofday"/>@if(!old('timeofday'))
+                               value="{{ old('timeofday') }}" name="timeofday"/>@if(!old('timeofday') && $lastevent)
                             <span class="ml-4 btn-small cursor-pointer"
                                   x-on:click="timeofday='{{ $lastevent->timeofday }}'">Senaste</span>
                         @endif
@@ -82,7 +82,7 @@
                         <input type="text"
                                @if(!old('comment'))x-model="comment" @endif
                                class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
-                               value="{{ old('comment') }}" name="comment"/>@if(!old('comment'))
+                               value="{{ old('comment') }}" name="comment"/>@if(!old('comment') && $lastevent)
                             <span class="ml-4 btn-small cursor-pointer"
                                   x-on:click="comment='{{ $lastevent->comment }}'">Senaste</span>
                         @endif
@@ -92,7 +92,7 @@
                         <input type="text"
                                @if(!old('link'))x-model="link" @endif
                                class="max-w-lg w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
-                               value="{{ old('link') }}" name="link"/>@if(!old('link'))
+                               value="{{ old('link') }}" name="link"/>@if(!old('link') && $lastevent)
                             <span class="ml-4 btn-small cursor-pointer" x-on:click="link='{{ $lastevent->link }}'">Senaste</span>
                         @endif
                     </div>
