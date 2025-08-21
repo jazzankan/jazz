@@ -41,6 +41,7 @@ class Contactmessage extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
+                    ->from('jazztider@webbsallad.se', 'Jazztider')
                     ->subject('Jazztiders kontaktformulär')
                     ->greeting('Hallå Anders!')
                     ->line('Jazztider har kontaktats av ' . $this->Contactmessage['name'])
