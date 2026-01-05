@@ -15,7 +15,6 @@ class JazzSpider extends BasicSpider
 {
     public array $startUrls = [
         'https://jazzimalmo.com/',
-        'https://jazzensvanner.com/',
         'https://www.unityjazz.se/program'
     ];
 

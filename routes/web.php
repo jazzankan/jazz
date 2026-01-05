@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\EventController;
@@ -48,7 +49,13 @@ Route::post('/contact', [PublicController::class,'store'])
 require __DIR__.'/auth.php';
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $lastday = DB::table('statistics')->latest('date')->first();
+    $lastdaynumber = $lastday->number;
+    $rows = DB::table('statistics')->count();
+    $sum = DB::table('statistics')->sum('number');
+    $average = $sum / $rows;
+    $average = round($average, 1);
+    return view('dashboard')->with('lastdaynumber', $lastdaynumber ?? '')->with('average', $average ?? '');
 })->middleware(['auth'])->name('dashboard');
 
 Route::resource('events', EventController::class)

@@ -8,6 +8,7 @@ use App\Models\Link;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Notifications\Contactmessage;
+use Illuminate\Support\Facades\DB;
 
 class PublicController extends Controller
 {
@@ -25,10 +26,15 @@ class PublicController extends Controller
 
         if(!auth()->user()) {
             $visitingnumber = file_get_contents("../counter.txt");
+            $dayvisits = file_get_contents("../daycounter.txt");
             //Försök att förhindra reset med en  if-sats. Funktionen kan tydligen returnera en tom sträng ibland.
             if($visitingnumber != "") {
                 $visitingnumber = (int)$visitingnumber + 1;
                 file_put_contents("../counter.txt", $visitingnumber);
+            }
+            if($dayvisits != "") {
+                $dayvisits = (int)$dayvisits + 1;
+                file_put_contents("../daycounter.txt", $dayvisits);
             }
         }
 
