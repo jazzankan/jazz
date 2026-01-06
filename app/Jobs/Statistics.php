@@ -25,7 +25,12 @@ class Statistics implements ShouldQueue
     {
         $date = \Carbon\Carbon::now()->timezone('Europe/Stockholm')->format('Y-m-d');
         $day = \Carbon\Carbon::now()->timezone('Europe/Stockholm')->minDayName;
-        $number = file_get_contents("daycounter.txt");
+        //utveckling:
+        //$number = file_get_contents("daycounter.txt");
+        //skarpa:
+        $number = file_get_contents('/home/master/applications/jazz/public_html/daycounter.txt');
+
+
 
         DB::table('statistics')->insert(['date'=>$date,'day'=>$day,'number'=>$number]);
         file_put_contents("daycounter.txt", 0);

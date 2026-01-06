@@ -23,4 +23,4 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 
-Schedule::job(new Statistics)->dailyAt('17:43');
+Schedule::job(new Statistics)->dailyAt('23.54');
