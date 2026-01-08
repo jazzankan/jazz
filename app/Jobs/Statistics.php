@@ -33,6 +33,9 @@ class Statistics implements ShouldQueue
 
 
         DB::table('statistics')->insert(['date'=>$date,'day'=>$day,'number'=>$number]);
-        file_put_contents("daycounter.txt", 0);
+        //utveckling:
+        //file_put_contents("daycounter.txt", 0);
+        //skarpa:
+        file_put_contents('/home/master/applications/jazz/public_html/daycounter.txt', 0);
     }
 }
