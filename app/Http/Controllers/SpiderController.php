@@ -12,13 +12,10 @@ class SpiderController extends Controller
 {
     public function index()
     {
-        Roach::startSpider(JazzSpider::class);
+        //Roach taget ur bruk
+        //Roach::startSpider(JazzSpider::class);
 
-     $orgcheck = Organizer::whereHas('spiderdata', function($q){
-         $q->where('warning', '1');
-     })->get();
-
-        return view('spiders.index')->with('orgcheck',$orgcheck);
+        return view('spiders.index');
     }
     public function destroy(Spider $spider)
     {
